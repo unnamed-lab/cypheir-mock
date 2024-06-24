@@ -54,6 +54,6 @@ jobs:
           prettier_extensions: css,html,js,json,jsx,md,sass,scss,ts,tsx,vue
           prettier_auto_fix: true
           eslint: true
-          eslint_extensions: js,jsx,md,mdx,ts,tsx
+          eslint_extensions: js,jsx,ts,tsx
           eslint_auto_fix: true
           commit_message: "[fix] codebase style issues with ${linter}"
