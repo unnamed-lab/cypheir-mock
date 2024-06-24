@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h3 align="center">Cypheir Mock API</h3>
+<p align="center">
+    Generate, Mock and Test Your API
+</p>
+<div align="center">
+  <a href="https://github.com/magicuidesign/magicui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/unnamed-lab/cypheir-mock"></a>
+  <a href="https://twitter.com/unnamedcodes"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/unnamedcodes"></a>
+  <a href="https://github.com/unnamed-lab/cypheir-mock/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <!-- <img alt="Discord" src="https://img.shields.io/discord/"> -->
+  
+</div>
 
-## Getting Started
+## Description
 
-First, run the development server:
+Cypheir Mock is a tool that allows developers to create mock APIs quickly. Whether you’re building a new application, testing integrations, or need to simulate responses during development, this service has you covered.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- API Generation: Easily create API endpoints with customizable routes, request parameters, and response data.
+- Mocking Capabilities: Generate mock data based on your API specification. This ensures accurate testing of input parameter validation and edge cases.
+- Integration Testing: Accelerate development lifecycles by using mock endpoints for third-party APIs. Account for random failures, slow response times, and other scenarios.
+- Easy Setup: Get started in minutes with our straightforward setup instructions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Coming soon!
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Let's talk
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<a href="https://cal.com/unnamedcodes/cypheir-mock"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
-## Deploy on Vercel
+## Authors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<a href="https://github.com/unnamed-lab/cypheir-mock/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=unnamed-lab/cypheir-mock" />
+</a>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Funnamed-lab%2Fcypheir-mock)
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/323478354a118ace61d7e3429def61e96016e5f5.svg 'Repobeats analytics image')
+
+## License
+
+Licensed under the [MIT license](https://github.com/magicuidesign/magicui/blob/main/LICENSE.md).
+
+## Attribution
+
+<a target="_blank" href="https://icons8.com/icon/1yYcMrloqIfA/code">Code</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
