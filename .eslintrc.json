@@ -1,11 +1,6 @@
 {
-    "extends": [
-        "next/core-web-vitals",
-        "@typescript-eslint/eslint-plugin",
-        "@typescript-eslint/parser"
-    ],
-    "env": {
-        "browser": true,
-        "node": true
+    "extends": ["next/core-web-vitals", "next"],
+    "rules": {
+        "no-unused-vars": "error"
     }
 }
