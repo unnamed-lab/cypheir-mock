@@ -1,3 +1,6 @@
 # exclude every workflow files
 *.yaml
 *.yml
+*.png
+*.txt
+*.ico
