@@ -1,5 +1,5 @@
 {
-    "extends": ["next/core-web-vitals", "next"],
+    "extends": ["next", "prettier"],
     "rules": {
         "no-unused-vars": "error",
         "@next/next/no-img-element": "off"
