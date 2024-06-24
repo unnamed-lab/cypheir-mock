@@ -41,9 +41,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Revert changes into the package-lock.json file
-        run: git checkout -- package-lock.json
-
       - name: Run Linters
         uses: wearerequired/lint-action@v2
         with:
@@ -57,5 +54,6 @@ jobs:
           prettier_extensions: css,html,js,json,jsx,md,sass,scss,ts,tsx,vue
           prettier_auto_fix: true
           eslint: true
+          eslint_extensions: js,jsx,ts,tsx
           eslint_auto_fix: true
           commit_message: "[fix] codebase style issues with ${linter}"
