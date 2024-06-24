@@ -1,3 +1,5 @@
+<img alt="Cypheir Mock API - Generate, Mock and Test Your API" src="https://github.com/unnamed-lab/cypheir-mock/assets/100434871/bb7e96bb-8133-4255-aa2b-ec10cb8a0dc6" width="100%">
+
 <h3 align="center">Cypheir Mock API</h3>
 <p align="center">
     Generate, Mock and Test Your API
