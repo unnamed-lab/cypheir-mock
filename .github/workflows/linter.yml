@@ -41,9 +41,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Revert changes into the package-lock.json file
-        run: git checkout -- package-lock.json
-
       - name: Run Linters
         uses: wearerequired/lint-action@v2
         with:
