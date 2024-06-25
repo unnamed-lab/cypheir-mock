@@ -1,11 +1,15 @@
 {
     "name": "cypheir-mock",
+    "description": "A tool that allows developers to create mock APIs quickly.",
     "version": "0.1.0",
     "private": true,
     "keywords": [
         "mock",
+        "api",
+        "restful",
         "cypheir",
-        "unnamed-lab"
+        "unnamed-lab",
+        "unnamedcodes"
     ],
     "author": "Adebayo Anuoluwa Success",
     "scripts": {
@@ -16,9 +20,12 @@
         "prettier": "prettier . --write"
     },
     "dependencies": {
+        "clsx": "^2.1.1",
+        "framer-motion": "^11.2.11",
         "next": "14.2.4",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "tailwind-merge": "^2.3.0"
     },
     "devDependencies": {
         "@types/node": "^20",
@@ -32,7 +39,17 @@
         "postcss": "^8",
         "prettier": "^3.3.2",
         "prettier-plugin-tailwindcss": "^0.6.5",
-        "tailwindcss": "^3.4.1",
+        "tailwindcss": "^3.4.4",
         "typescript": "^5"
-    }
+    },
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/unnamed-lab/cypheir-mock.git"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/unnamed-lab/cypheir-mock/issues"
+    },
+    "homepage": "https://github.com/unnamed-lab/cypheir-mock#readme"
 }
