@@ -47,7 +47,7 @@ Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/mai
 
 ## Stats
 
-![Alt](https://repobeats.axiom.co/api/embed/323478354a118ace61d7e3429def61e96016e5f5.svg 'Repobeats analytics image')
+![Alt](https://repobeats.axiom.co/api/embed/323478354a118ace61d7e3429def61e96016e5f5.svg "Repobeats analytics image")
 
 ## License
 

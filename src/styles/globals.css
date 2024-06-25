@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1ca7ec;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f3f3f3;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #ced4da;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: no-repeat
+        linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)));
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer components {
+    .home-grad {
+        @apply before:absolute before:h-52 before:w-52 before:rounded-full before:bg-primary before:opacity-5 before:blur-3xl md:before:left-[50%] md:before:top-[50%] md:before:opacity-20 md:before:[transform:translate(-50%,-50%)];
+    }
+}
+
+.error {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-200deg, #fff, #f8f9fa, #ced4da, #1ca7ec);
+}
+.error .error_container {
+    display: grid;
+    grid-template-columns: 1fr 1.125fr;
+    width: 60%;
+    gap: 2rem;
+}
+@media (max-width: 767px) {
+    .error .error_container {
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+}
+.error .error_container .error_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.error .error_container .error_item h1 {
+    font-size: 2.75rem;
+    font-weight: 600;
+}
+.error .error_container .error_item h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.error .error_container .error_item p {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+}
+.error .error_container .error_item a {
+    color: #1ca7ec;
+}
+.error .error_container .error_item a:hover,
+.error .error_container .error_item a:focus {
+    color: #88d6fd;
+}

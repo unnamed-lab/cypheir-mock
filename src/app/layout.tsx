@@ -1,32 +1,56 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import meta from '@/util/metadata'
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import "@/styles/globals.css";
+import meta from "@/util/metadata";
+import { WebVitals } from "./web-vitals";
+import { MetadataProps } from "@/interface/ui";
+import { Footer } from "@/components/layout";
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
-export const metadata: Metadata = {
-    metadataBase: meta.url,
-    title: meta.title,
-    description: meta.desc,
-    openGraph: {
+export async function generateMetadata({
+    params,
+}: MetadataProps): Promise<Metadata> {
+    const { id } = params;
+    const siteURL = meta.url;
+    return {
+        metadataBase: meta.url,
         title: meta.title,
         description: meta.desc,
-        url: meta.url,
-    },
-    alternates: {
-        canonical: './',
-    },
+        openGraph: {
+            title: meta.title,
+            description: meta.desc,
+            url: meta.url,
+            siteName: meta.siteName,
+            locale: "en_UK",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            creator: meta.creator,
+        },
+        alternates: {
+            canonical: `${siteURL}/${!id ? "" : id}`,
+        },
+        keywords: meta.keywords,
+    };
 }
 
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode
+    children: React.ReactNode;
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={poppins.className}>
+                {process.env.PROJECT_STATUS === "development" && <WebVitals />}
+                {children}
+                <Footer />
+            </body>
         </html>
-    )
+    );
 }
