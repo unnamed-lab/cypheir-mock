@@ -3,15 +3,18 @@ import Link from "next/link";
 export default function Footer() {
     const year = new Date().getFullYear();
     return (
-        <footer className="mr-auto flex items-center gap-1 border-t px-[3.5%] py-2 text-xs font-light md:text-sm">
-            {"Brought to you by "}
+        <footer className="mr-auto flex items-center border-t px-[3.5%] py-5 font-sans text-xs font-light md:text-sm">
+            Brought to you by
             <Link
-                className="underline underline-offset-4"
+                className="ease ml-1 underline underline-offset-4 transition-all hover:text-primary hover:no-underline hover:font-medium"
                 href="https://x.com/unnamedcodes"
             >
                 unnamedcodes
             </Link>
-            .<span className="ml-auto">&copy;{year} Cypheir.</span>
+            .
+            <span className="ml-auto flex w-min md:w-max">
+                &copy;{year} Cypheir.
+            </span>
         </footer>
     );
 }
