@@ -3,16 +3,16 @@ import { screen, render, fireEvent } from "@testing-library/react";
 import Button from "../button";
 
 describe("Button component", () => {
+    render(<Button>Button</Button>);
+    const button = screen.getByRole("button");
+
     it("should render button element", () => {
-        render(<Button>Button</Button>);
-        const button = screen.getByRole("button");
         expect(button).toBeInTheDocument();
     });
 
     it("should render the correct inner text", () => {
-        render(<Button>Button</Button>);
-        const button = screen.getByRole("button").innerHTML;
-        expect(button === "Button").toBeTruthy();
+        const buttonText = button.innerHTML;
+        expect(buttonText === "Button").toBeTruthy();
     });
 
     it("should handle click function", () => {
@@ -21,5 +21,7 @@ describe("Button component", () => {
         const button = screen.getByRole("button");
         fireEvent.click(button)
         expect(handleClick).toHaveBeenCalledTimes(1)
+        fireEvent.click(button)
+        expect(handleClick).toHaveBeenCalledTimes(2)
     });
 });
