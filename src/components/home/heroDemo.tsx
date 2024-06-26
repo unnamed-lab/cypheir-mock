@@ -26,7 +26,7 @@ export default function HeroDemo() {
             >
                 <Image
                     priority
-                    className="mx-auto h-auto w-full md:w-10/12"
+                    className="pointer-events-none mx-auto h-auto w-full lg:w-10/12"
                     src={"/snippet.png"}
                     alt="Codebase"
                     width={400}
@@ -34,7 +34,7 @@ export default function HeroDemo() {
                 />
                 <Image
                     priority
-                    className="absolute -bottom-16 -right-10 mx-auto h-auto w-6/12 [filter:drop-shadow(1px_1px_0.5px_#c1c1c1aa)] md:-bottom-24 md:-right-20"
+                    className="pointer-events-none absolute -bottom-12 -right-10 mx-auto h-auto w-6/12 select-none [filter:drop-shadow(1px_1px_0.5px_#c1c1c1aa)] md:bottom-auto lg:-bottom-24 lg:-right-20"
                     src={developer}
                     alt="Cypheir Developer"
                     width={200}
