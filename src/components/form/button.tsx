@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export default function Button({
     className,
     handler,
-    type,
+    type = "button",
     children,
 }: ButtonProps) {
     return (
