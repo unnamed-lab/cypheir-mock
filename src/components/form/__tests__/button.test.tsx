@@ -19,9 +19,9 @@ describe("Button component", () => {
         const handleClick = jest.fn();
         render(<Button handler={handleClick}>Button</Button>);
         const button = screen.getByRole("button");
-        fireEvent.click(button)
-        expect(handleClick).toHaveBeenCalledTimes(1)
-        fireEvent.click(button)
-        expect(handleClick).toHaveBeenCalledTimes(2)
+        fireEvent.click(button);
+        expect(handleClick).toHaveBeenCalledTimes(1);
+        fireEvent.click(button);
+        expect(handleClick).toHaveBeenCalledTimes(2);
     });
 });
