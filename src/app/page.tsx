@@ -4,7 +4,7 @@ import { Hero } from "@/views";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col gap-3 overflow-hidden px-[7.5%] mt-[2.5%] mb-5 md:min-h-[80svh] md:overflow-visible">
+        <main className="mb-5 mt-[2.5%] flex min-h-screen flex-col gap-3 overflow-hidden px-[7.5%] md:min-h-[80svh] md:overflow-visible">
             <Nav />
             <Hero />
             <ModalBackdrop />

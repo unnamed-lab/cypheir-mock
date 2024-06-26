@@ -12,7 +12,7 @@ export default function HeroBox() {
             </BoxReveal>
 
             <BoxReveal boxColor={"#1ca7ec"} duration={0.5}>
-                <h2 className="mt-[.75rem] text-lg lg:text-xl font-semibold">
+                <h2 className="mt-[.75rem] text-lg font-semibold lg:text-xl">
                     Generate, Mock and Test your{" "}
                     <span className="text-primary">APIs</span>.
                 </h2>
@@ -29,7 +29,7 @@ export default function HeroBox() {
             </BoxReveal>
 
             <BoxReveal boxColor={"#1ca7ec"} duration={0.5} width="100%">
-                <Button className="mt-[1.6rem] w-full rounded-lg bg-primary px-8 text-lg font-medium uppercase text-white hover:bg-black md:w-fit text-center justify-center">
+                <Button className="mt-[1.6rem] w-full justify-center rounded-lg bg-primary px-8 text-center text-lg font-medium uppercase text-white hover:bg-black md:w-fit">
                     Get Started
                 </Button>
             </BoxReveal>

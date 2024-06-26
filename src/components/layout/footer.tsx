@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className="mr-auto flex items-center border-t px-[3.5%] py-5 font-sans text-xs font-light md:text-sm">
             Brought to you by
             <Link
-                className="ease ml-1 underline underline-offset-4 transition-all hover:text-primary hover:no-underline hover:font-medium"
+                className="ease ml-1 underline underline-offset-4 transition-all hover:font-medium hover:text-primary hover:no-underline"
                 href="https://x.com/unnamedcodes"
             >
                 unnamedcodes
