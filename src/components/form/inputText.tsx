@@ -29,6 +29,7 @@ export default function InputText({
                 placeholder={placeholder}
                 aria-placeholder={placeholder}
                 name={name}
+                aria-label={name}
                 id={identifier}
             />
         </>
