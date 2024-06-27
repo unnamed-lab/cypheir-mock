@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Block from "../block";
 
 describe("Custom error block component", () => {
-    const blockImg = "/image.jpg"
+    const blockImg = "/image.jpg";
     const blockDesc = "This is a mock block description.";
     const blockTitle = "This is a block title.";
     const blockMsg = " This is a block error message.";
