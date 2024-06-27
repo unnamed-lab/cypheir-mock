@@ -1,3 +1,4 @@
+import { ModalForm } from "@/components/form";
 import { HeroBox, HeroDemo } from "@/components/home";
 
 export default function Hero() {
@@ -9,6 +10,9 @@ export default function Hero() {
             <div className="my-4 w-full md:w-6/12">
                 <HeroDemo />
             </div>
+            <ModalForm>
+                <div className="H"></div>
+            </ModalForm>
         </section>
     );
 }

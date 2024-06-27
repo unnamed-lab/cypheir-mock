@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export interface BlockProps {
     image: string;
     title: string;
@@ -20,6 +22,11 @@ export interface IconProps {
     height?: number;
     className?: string;
     pathFill?: string;
+}
+
+export interface BackdropProps {
+    state?: boolean;
+    handler?: MouseEventHandler<HTMLDivElement>;
 }
 
 // For testing purposes

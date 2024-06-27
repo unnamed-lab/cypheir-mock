@@ -24,3 +24,8 @@ export interface InputProps {
     id?: string;
     label?: string;
 }
+
+export interface ModalFormProps {
+    type?: "login" | "register";
+    OAuth?: boolean;
+}
