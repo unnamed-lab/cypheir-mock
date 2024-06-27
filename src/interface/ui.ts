@@ -21,3 +21,9 @@ export interface IconProps {
     className?: string;
     pathFill?: string;
 }
+
+// For testing purposes
+export interface User {
+    id: number;
+    name: string;
+}
