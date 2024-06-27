@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { screen, render, fireEvent } from "@testing-library/react";
 import Button from "../button";
 
