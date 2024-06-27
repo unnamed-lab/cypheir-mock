@@ -6,17 +6,19 @@ import { BlockProps } from "@/interface/ui";
 export default function Block(props: BlockProps) {
     const { image, desc, title, backLink, message } = props;
     return (
-        <div className="error">
+        <div role="presentation" className="error">
             <div className="error_container">
                 <div className="error_item">
-                    <Image src={image} alt={desc} />
+                    <Image src={image} alt={desc} width={200} height={200} />
                 </div>
                 <div className="error_item">
                     <h1>{title}</h1>
                     <p>{desc}</p>
-                    <p className="text-xs font-light text-zinc-400">
-                        {message}
-                    </p>
+                    {message && (
+                        <p className="text-xs font-light text-zinc-400">
+                            {message}
+                        </p>
+                    )}
                     {backLink ? <Link href="/">Return Home</Link> : ""}
                 </div>
             </div>
