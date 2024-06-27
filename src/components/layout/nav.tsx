@@ -5,22 +5,22 @@ import { Button } from "../form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import { User } from "@/interface/ui";
 
-export default function Nav() {
+export default function Nav({ user }: { user?: User }) {
     return (
-        <div className="flex w-full items-center justify-between gap-2">
+        <nav className="flex w-full items-center justify-between gap-2">
             <Brand />
-            <NavMenu />
-        </div>
+            <NavMenu user={user} />
+        </nav>
     );
 }
 
-function NavMenu() {
-    const [isLogged, setLog] = useState<boolean>(true);
+function NavMenu({ user }: { user?: User }) {
     return (
         <div className="hidden items-center gap-2 lg:flex">
             <GitHubRedirect />
-            {isLogged ? (
+            {!user ? (
                 <div className="flex items-center gap-2">
                     <LoginButton url="/" />
                     <RegisterButton url="/" />
@@ -36,7 +36,6 @@ function NavMenu() {
 }
 
 function GitHubRedirect() {
-    const router = useRouter();
     return (
         <>
             <Link href="https://github.com/unnamed-lab/cypheir-mock">

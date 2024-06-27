@@ -2,8 +2,8 @@ export interface BlockProps {
     image: string;
     title: string;
     desc: string;
-    message: string;
-    backLink: boolean;
+    message?: string;
+    backLink?: boolean;
 }
 
 export type MetadataProps = {
@@ -20,4 +20,10 @@ export interface IconProps {
     height?: number;
     className?: string;
     pathFill?: string;
+}
+
+// For testing purposes
+export interface User {
+    id: number;
+    name: string;
 }
