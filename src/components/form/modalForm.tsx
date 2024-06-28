@@ -1,26 +1,57 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { ModalBackdrop } from "../ui";
 import Button from "./button";
 import { GitHubIcon } from "@/icons";
 import { ModalFormProps } from "@/interface/form";
+import InputText from "./inputText";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function ModalForm({
     OAuth = false,
     type = "login",
+    state = false,
+    setState,
 }: ModalFormProps) {
-    const [isActive, setActive] = useState<boolean>(true);
     const [formData, setFormData] = useState<Record<string, string>>({});
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const signInResponse = await signIn("email", {
+            email: formData["email"],
+            redirect: false,
+        });
+
+        if (signInResponse && !signInResponse.error) {
+            if (error) setError(null);
+            router.push("/");
+        } else {
+            console.log("Error: ", signInResponse);
+            setError("Invalid email address.");
+        }
     };
+
+    const handleGitHub = async () => {
+        signIn("github");
+    };
+
     const closeModal = () => {
-        setActive((prev) => !prev);
+        setState((prev) => !prev);
+    };
+    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
     };
 
     return (
         <>
-            {isActive && (
+            {state && (
                 <section className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
                     <form
                         action=""
@@ -33,8 +64,21 @@ export default function ModalForm({
                                 : "register account"}
                             <span className="text-3xl text-primary">.</span>
                         </h2>
-                        <br />
-                        <br />
+                        <div className="min-w-9/12 lg:7/12 mx-auto mb-2 w-9/12">
+                            <InputText
+                                label="Email Address:"
+                                name="email"
+                                type="email"
+                                className=""
+                                placeholder="Enter your email address"
+                                handler={handleInput}
+                            />
+                            {error && (
+                                <p className="my-2 px-2 py-3 text-xs font-light text-red-600">
+                                    {error}
+                                </p>
+                            )}
+                        </div>
                         <Button
                             type="submit"
                             className="min-w-9/12 lg:7/12 mx-auto w-9/12 bg-primary capitalize text-white hover:bg-zinc-900"
@@ -47,7 +91,8 @@ export default function ModalForm({
                                     OR
                                 </div>
                                 <Button
-                                    type="submit"
+                                    type="button"
+                                    handler={handleGitHub}
                                     className="min-w-9/12 lg:7/12 mx-auto w-9/12 bg-white text-zinc-900 outline outline-1 outline-zinc-900 hover:bg-slate-100"
                                 >
                                     <GitHubIcon width={20} height={20} />{" "}
@@ -58,7 +103,7 @@ export default function ModalForm({
                     </form>
                 </section>
             )}
-            <ModalBackdrop state={isActive} handler={closeModal} />
+            <ModalBackdrop state={state} handler={closeModal} />
         </>
     );
 }

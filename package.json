@@ -25,9 +25,14 @@
         "clsx": "^2.1.1",
         "framer-motion": "^11.2.11",
         "next": "14.2.4",
+        "next-auth": "^4.24.7",
+        "nodemailer": "^6.9.14",
         "react": "^18",
         "react-dom": "^18",
-        "tailwind-merge": "^2.3.0"
+        "sharp": "^0.33.4",
+        "tailwind-forms": "^1.0.6",
+        "tailwind-merge": "^2.3.0",
+        "toastify": "^2.0.1"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^6.4.6",

@@ -5,6 +5,7 @@ import meta from "@/util/metadata";
 import { WebVitals } from "./web-vitals";
 import { MetadataProps } from "@/interface/ui";
 import { Footer } from "@/components/layout";
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -54,3 +55,14 @@ export default function RootLayout({
         </html>
     );
 }
+
+// export default function App({
+//   Component,
+//   pageProps: { session, ...pageProps },
+// }) {
+//   return (
+//     <SessionProvider session={session}>
+//       <Component {...pageProps} />
+//     </SessionProvider>
+//   )
+// }
