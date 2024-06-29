@@ -21,18 +21,18 @@ export default function ModalForm({
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const signInResponse = await signIn("email", {
-            email: formData["email"],
-            redirect: false,
-        });
+        // const signInResponse = await signIn("email", {
+        //     email: formData["email"],
+        //     redirect: false,
+        // });
 
-        if (signInResponse && !signInResponse.error) {
-            if (error) setError(null);
-            router.push("/");
-        } else {
-            console.log("Error: ", signInResponse);
-            setError("Invalid email address.");
-        }
+        // if (signInResponse && !signInResponse.error) {
+        //     if (error) setError(null);
+        //     router.push("/");
+        // } else {
+        //     console.log("Error: ", signInResponse);
+        //     setError("Invalid email address.");
+        // }
     };
 
     const handleGitHub = async () => {

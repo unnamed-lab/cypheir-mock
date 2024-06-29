@@ -19,11 +19,12 @@ export default function Nav({ user }: { user?: User }) {
     );
 }
 
-async function NavMenu({ user }: { user?: User }) {
+function NavMenu({ user }: { user?: User }) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
-    const session = await getServerSession(authConfig);
+    // const session = await getServerSession(authConfig);
+    const session = false;
 
-    const loginHandler = () => {
+    const loginHandler = async () => {
         setLoginModal((prev) => !prev);
     };
     return (

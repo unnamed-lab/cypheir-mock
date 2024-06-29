@@ -5,8 +5,10 @@ const nextConfig = {
         config.resolve.fallback = {
             ...config.resolve.fallback,
             net: false,
-            os: false,
             fs: false,
+            dns: false,
+            child_process: false,
+            tls: false,
         };
 
         return config;
