@@ -19,7 +19,7 @@ export default function Nav({ session }: PageSession) {
     );
 }
 
-function NavMenu({ session }:PageSession) {
+function NavMenu({ session }: PageSession) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
     const loginHandler = () => {
