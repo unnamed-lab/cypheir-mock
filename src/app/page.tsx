@@ -1,5 +1,4 @@
 import { Nav } from "@/components/layout";
-import { ModalBackdrop } from "@/components/ui";
 import { authConfig } from "@/lib/auth";
 import { Hero } from "@/views";
 import { getServerSession } from "next-auth";

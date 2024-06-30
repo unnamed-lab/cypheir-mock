@@ -11,6 +11,9 @@ importers:
       '@prisma/client':
         specifier: ^5.16.1
         version: 5.16.1(prisma@5.16.1)
+      '@prisma/extension-accelerate':
+        specifier: ^1.1.0
+        version: 1.1.0(@prisma/client@5.16.1(prisma@5.16.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -645,6 +648,12 @@ packages:
 
   '@prisma/engines@5.16.1':
     resolution: {integrity: sha512-KkyF3eIUtBIyp5A/rJHCtwQO18OjpGgx18PzjyGcJDY/+vNgaVyuVd+TgwBgeq6NLdd1XMwRCI+58vinHsAdfA==}
+
+  '@prisma/extension-accelerate@1.1.0':
+    resolution: {integrity: sha512-sESjhBZ4ywQjAVpKzsfhxyNu+9txIM5I6M1MPBaJBq/xDlqmniIAhlwIEt9KLtO80zqPxqbZYes18zrkgYqNiQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@prisma/client': '>=4.16.1'
 
   '@prisma/fetch-engine@5.16.1':
     resolution: {integrity: sha512-oOkjaPU1lhcA/Rvr4GVfd1NLJBwExgNBE36Ueq7dr71kTMwy++a3U3oLd2ZwrV9dj9xoP6LjCcky799D9nEt4w==}
@@ -3833,6 +3842,10 @@ snapshots:
       '@prisma/engines-version': 5.16.0-24.34ace0eb2704183d2c05b60b52fba5c43c13f303
       '@prisma/fetch-engine': 5.16.1
       '@prisma/get-platform': 5.16.1
+
+  '@prisma/extension-accelerate@1.1.0(@prisma/client@5.16.1(prisma@5.16.1))':
+    dependencies:
+      '@prisma/client': 5.16.1(prisma@5.16.1)
 
   '@prisma/fetch-engine@5.16.1':
     dependencies:

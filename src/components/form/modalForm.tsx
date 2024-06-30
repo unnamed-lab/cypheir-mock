@@ -1,11 +1,10 @@
 "use client";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { ModalBackdrop } from "../ui";
 import Button from "./button";
 import { GitHubIcon } from "@/icons";
 import { ModalFormProps } from "@/interface/form";
-import InputText from "./inputText";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function ModalForm({
@@ -14,49 +13,45 @@ export default function ModalForm({
     state = false,
     setState,
 }: ModalFormProps) {
-    const [formData, setFormData] = useState<Record<string, string>>({});
-    const [error, setError] = useState<string | null>(null);
+    const session = useSession();
     const router = useRouter();
 
+    const [innerState, setInnerState] = useState<boolean>(false);
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        const signInResponse = await signIn("email", {
-            email: formData["email"],
-            redirect: false,
-        });
-
-        if (signInResponse && !signInResponse.error) {
-            if (error) setError(null);
-            router.push("/");
-        } else {
-            console.log("Error: ", signInResponse);
-            setError("Invalid email address.");
-        }
     };
 
     const handleGitHub = async () => {
-        signIn("github");
+        signIn("github").then(console.log);
     };
 
     const closeModal = () => {
         setState((prev) => !prev);
+        setInnerState((prev) => !prev);
     };
-    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
-    };
+
+    useEffect(() => {
+        if (session.data?.user) {
+            console.log("Modal redirect!");
+            router.push("/");
+        } else {
+            console.log("change inner");
+            // I don't know why this didn't work
+            // setInnerState((prev) => !prev);
+            setInnerState(true);
+        }
+    }, [session, router, state, setState, innerState]);
+
+    if (!innerState) return null;
 
     return (
         <>
-            {state && (
+            {state && !session.data?.user && (
                 <section className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
                     <form
                         action=""
                         onSubmit={handleSubmit}
-                        className="relative z-40 flex w-11/12 flex-col gap-1 rounded-xl bg-slate-50 p-5 md:w-7/12 lg:w-4/12"
+                        className="relative z-40 flex w-11/12 flex-col gap-1 rounded-xl bg-slate-50 p-5 md:w-7/12 lg:w-4/12 shadow-md"
                     >
                         <h2 className="mb-2 border-b border-b-slate-300 pb-2 text-center text-2xl font-bold capitalize">
                             {type === "login"
