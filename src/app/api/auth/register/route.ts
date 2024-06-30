@@ -22,6 +22,14 @@ export async function POST(req: Request) {
             return NextResponse.json({ user }, { status: 201 });
         }
 
+        if (hasUser.name !== name || hasUser.email !== email) {
+            const user = await prisma.user.update({
+                where: { id: hasUser.id },
+                data: { email, name },
+            });
+            return NextResponse.json({ user }, { status: 200 });
+        }
+
         return NextResponse.json({ user: hasUser }, { status: 201 });
     } catch (error) {
         console.log(error);

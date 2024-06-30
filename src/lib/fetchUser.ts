@@ -1,10 +1,4 @@
-export async function getUserData({
-    name,
-    email,
-}: {
-    name: string;
-    email: string;
-}) {
+export async function getUserData(name: string, email: string) {
     const body = JSON.stringify({ name, email });
     const data = await fetch(
         `${process.env.NEXTAUTH_URL as string}/api/auth/register`,
@@ -19,8 +13,8 @@ export async function getUserData({
 
     if (data) {
         const output = await data.json();
-        return JSON.parse(output);
+        console.log(output);
+        return output;
     }
-
-    return null;
+    return null
 }
