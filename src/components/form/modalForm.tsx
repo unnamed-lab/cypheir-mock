@@ -64,7 +64,7 @@ export default function ModalForm({
                                 : "register account"}
                             <span className="text-3xl text-primary">.</span>
                         </h2>
-                        <div className="min-w-9/12 lg:7/12 mx-auto mb-2 w-9/12">
+                        {/* <div className="min-w-9/12 lg:7/12 mx-auto mb-2 w-9/12">
                             <InputText
                                 label="Email Address:"
                                 name="email"
@@ -84,16 +84,17 @@ export default function ModalForm({
                             className="min-w-9/12 lg:7/12 mx-auto w-9/12 bg-primary capitalize text-white hover:bg-zinc-900"
                         >
                             {type === "login" ? "login" : "create account"}
-                        </Button>
+                        </Button> */}
+
                         {OAuth && (
                             <>
-                                <div className="pointer-events-none mx-auto my-2 select-none font-light text-zinc-500">
+                                {/* <div className="pointer-events-none mx-auto my-2 select-none font-light text-zinc-500">
                                     OR
-                                </div>
+                                </div> */}
                                 <Button
                                     type="button"
                                     handler={handleGitHub}
-                                    className="min-w-9/12 lg:7/12 mx-auto w-9/12 bg-white text-zinc-900 outline outline-1 outline-zinc-900 hover:bg-slate-100"
+                                    className="min-w-9/12 lg:7/12 mx-auto my-7 w-9/12 bg-white text-zinc-900 outline outline-1 outline-zinc-900 hover:bg-slate-100"
                                 >
                                     <GitHubIcon width={20} height={20} />{" "}
                                     {"Sign In with GitHub"}

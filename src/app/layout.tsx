@@ -5,7 +5,7 @@ import meta from "@/util/metadata";
 import { WebVitals } from "./web-vitals";
 import { MetadataProps } from "@/interface/ui";
 import { Footer } from "@/components/layout";
-import { SessionProvider } from "next-auth/react";
+import { AuthProvider } from "@/context";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -49,7 +49,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={poppins.className}>
                 {process.env.PROJECT_STATUS === "development" && <WebVitals />}
-                {children}
+                <AuthProvider>{children}</AuthProvider>
                 <Footer />
             </body>
         </html>

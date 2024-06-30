@@ -5,23 +5,22 @@ import Link from "next/link";
 import { Brand } from "../ui";
 import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
-import { User } from "@/interface/ui";
+import { PageSession } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";
 
-export default function Nav({ user }: { user?: User }) {
+export default function Nav({ session }: PageSession) {
     return (
         <nav className="flex w-full items-center justify-between gap-2">
             <Brand />
-            <NavMenu user={user} />
+            <NavMenu session={session} />
         </nav>
     );
 }
 
-async function NavMenu({ user }: { user?: User }) {
+function NavMenu({ session }:PageSession) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
-    const session = await getServerSession(authConfig);
 
     const loginHandler = () => {
         setLoginModal((prev) => !prev);
