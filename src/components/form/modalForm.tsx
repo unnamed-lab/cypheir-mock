@@ -51,7 +51,7 @@ export default function ModalForm({
                     <form
                         action=""
                         onSubmit={handleSubmit}
-                        className="relative z-40 flex w-11/12 flex-col gap-1 rounded-xl bg-slate-50 p-5 md:w-7/12 lg:w-4/12 shadow-md"
+                        className="relative z-40 flex w-11/12 flex-col gap-1 rounded-xl bg-slate-50 p-5 shadow-md md:w-7/12 lg:w-4/12"
                     >
                         <h2 className="mb-2 border-b border-b-slate-300 pb-2 text-center text-2xl font-bold capitalize">
                             {type === "login"

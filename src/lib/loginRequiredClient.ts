@@ -7,5 +7,4 @@ export function LoginIsRequiredClient() {
     if (typeof window !== "undefined") {
         if (!session) router.push("/");
     }
-
 }

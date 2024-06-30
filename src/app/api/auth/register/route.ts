@@ -14,12 +14,11 @@ export async function POST(req: Request) {
         await connectDatabase();
 
         const hasUser = await prisma.user.findFirst({
-            where: { email }
+            where: { email },
         });
 
         if (!hasUser) {
-            const user = await prisma.user.create({ data: { email, name } },
-            );
+            const user = await prisma.user.create({ data: { email, name } });
             return NextResponse.json({ user }, { status: 201 });
         }
 
