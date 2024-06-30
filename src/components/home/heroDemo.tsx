@@ -34,7 +34,7 @@ export default function HeroDemo() {
                 />
                 <Image
                     priority
-                    className="pointer-events-none absolute -bottom-12 -right-10 mx-auto h-auto w-6/12 select-none [filter:drop-shadow(1px_1px_0.5px_#c1c1c1aa)] md:bottom-auto lg:-bottom-24 lg:-right-20"
+                    className="pointer-events-none absolute -bottom-6 -right-10 mx-auto h-auto w-6/12 select-none [filter:drop-shadow(1px_1px_0.5px_#c1c1c1aa)] lg:-bottom-24 lg:-right-20"
                     src={developer}
                     alt="Cypheir Developer"
                     width={200}

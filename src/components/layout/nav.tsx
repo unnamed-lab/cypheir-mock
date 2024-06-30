@@ -27,7 +27,7 @@ function NavMenu({ session }: PageSession) {
     };
     return (
         <>
-            <div className="hidden items-center gap-2 lg:flex">
+            <div className="hidden items-center gap-2 sm:flex">
                 <GitHubRedirect />
                 <div className="flex items-center gap-2">
                     {!session ? (
