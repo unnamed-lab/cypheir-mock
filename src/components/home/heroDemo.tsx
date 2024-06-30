@@ -26,7 +26,7 @@ export default function HeroDemo() {
             >
                 <Image
                     priority
-                    className="pointer-events-none mx-auto h-auto w-full lg:w-10/12"
+                    className="pointer-events-none mx-auto h-auto max-h-[60svh] w-full object-contain lg:w-10/12"
                     src={"/snippet.png"}
                     alt="Codebase"
                     width={400}
