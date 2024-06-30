@@ -10,7 +10,7 @@ export default async function Home() {
     // console.log(session?.user?.name);
     // session?.user?.name
     return (
-        <main className="mb-5 mt-[5%] lg:mt-[2.5%] flex min-h-[70svh] flex-col gap-3 overflow-hidden px-[7.5%] md:min-h-[80svh] md:overflow-visible">
+        <main className="mb-5 mt-[5%] flex min-h-[70svh] flex-col gap-3 overflow-hidden px-[7.5%] md:min-h-[80svh] md:overflow-visible lg:mt-[2.5%]">
             <Nav session={session} />
             <Hero />
         </main>
