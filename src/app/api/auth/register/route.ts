@@ -7,7 +7,7 @@ export async function POST(req: Request) {
         const { name, email } = await req.json();
         if (!name || !email)
             return NextResponse.json(
-                { message: "invalide data" },
+                { message: "invalid data" },
                 { status: 422 }
             );
         await connectDatabase();
