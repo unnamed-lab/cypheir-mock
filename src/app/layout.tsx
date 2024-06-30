@@ -6,6 +6,8 @@ import { WebVitals } from "./web-vitals";
 import { MetadataProps } from "@/interface/ui";
 import { Footer } from "@/components/layout";
 import { AuthProvider } from "@/context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -49,7 +51,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={poppins.className}>
                 {process.env.PROJECT_STATUS === "development" && <WebVitals />}
-                <AuthProvider>{children}</AuthProvider>
+                <AuthProvider>
+                    {children}
+                    <ToastContainer />
+                </AuthProvider>
                 <Footer />
             </body>
         </html>
