@@ -1,7 +1,9 @@
 import {
     ChangeEventHandler,
+    Dispatch,
     HTMLInputAutoCompleteAttribute,
     MouseEventHandler,
+    SetStateAction,
 } from "react";
 
 export interface ButtonProps {
@@ -23,4 +25,17 @@ export interface InputProps {
     name?: string;
     id?: string;
     label?: string;
+    required?: boolean;
+}
+
+export interface ModalFormProps {
+    type?: "login" | "register";
+    OAuth?: boolean;
+    state?: boolean;
+    setState: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface LoginButtonProps {
+    url: string;
+    handler?: MouseEventHandler<HTMLButtonElement>;
 }

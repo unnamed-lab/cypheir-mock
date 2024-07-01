@@ -1,3 +1,4 @@
+"use client";
 import { InputProps } from "@/interface/form";
 import { cn } from "@/lib/utils";
 
@@ -13,11 +14,16 @@ export default function InputText({
     handler,
     type = "text",
     value,
+    required = false,
 }: InputProps) {
-    const identifier = id ? id : `${name}Id`;
+    const identifier = id && typeof id !== "undefined" ? id : `${name}Id`;
     return (
         <>
-            {label && <label htmlFor={identifier}>{label}</label>}
+            {label && (
+                <label htmlFor={identifier} className="mb-3 text-sm">
+                    {label}
+                </label>
+            )}
             <input
                 type={type}
                 onChange={handler}
@@ -25,12 +31,16 @@ export default function InputText({
                 autoComplete={autocomplete}
                 aria-autocomplete={ariaAutoComplete}
                 disabled={disabled}
-                className={cn("", className)}
+                className={cn(
+                    "my-2 w-full rounded-md px-3 py-2 text-sm outline outline-1 outline-slate-400 hover:outline-blue-200 focus-visible:outline-primary active:outline-primary",
+                    className
+                )}
                 placeholder={placeholder}
                 aria-placeholder={placeholder}
                 name={name}
                 aria-label={name}
                 id={identifier}
+                required={required}
             />
         </>
     );

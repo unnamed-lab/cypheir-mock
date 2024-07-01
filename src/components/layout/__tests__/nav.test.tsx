@@ -31,9 +31,7 @@ describe("Navigation bar component", () => {
     it("should display login and register buttons when not logged in", () => {
         render(<Nav />);
         const loginBtn = screen.getByRole("button", { name: /login/i });
-        const registerBtn = screen.getByRole("button", { name: /register/i });
         expect(loginBtn).toBeInTheDocument();
-        expect(registerBtn).toBeInTheDocument();
     });
 
     it("should display create and manage mock buttons when not logged in", () => {

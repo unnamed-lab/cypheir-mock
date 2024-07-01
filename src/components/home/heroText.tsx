@@ -1,8 +1,14 @@
 "use client";
+import { useState } from "react";
 import BoxReveal from "@/components/magicui/box-reveal";
-import { Button } from "@/components/form";
+import { Button, ModalForm } from "@/components/form";
 
 export default function HeroBox() {
+    const [loginModal, setLoginModal] = useState<boolean>(false);
+
+    const loginHandler = () => {
+        setLoginModal((prev) => !prev);
+    };
     return (
         <div className="h-full w-full max-w-[100%] items-center justify-center overflow-hidden font-sans md:pt-5">
             <BoxReveal boxColor={"#1ca7ec"} width="100%" duration={0.5}>
@@ -29,10 +35,22 @@ export default function HeroBox() {
             </BoxReveal>
 
             <BoxReveal boxColor={"#1ca7ec"} duration={0.5} width="100%">
-                <Button className="mt-[1.6rem] w-full justify-center rounded-lg bg-primary px-8 text-center text-lg font-medium uppercase text-white hover:bg-black md:w-fit">
+                <Button
+                    className="mt-[1.6rem] w-full justify-center rounded-lg bg-primary px-8 text-center text-lg font-medium uppercase text-white hover:bg-black md:w-fit"
+                    handler={loginHandler}
+                >
                     Get Started
                 </Button>
             </BoxReveal>
+
+            {loginModal && (
+                <ModalForm
+                    OAuth={true}
+                    type={"login"}
+                    state={loginModal}
+                    setState={setLoginModal}
+                />
+            )}
         </div>
     );
 }

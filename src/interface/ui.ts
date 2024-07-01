@@ -1,3 +1,6 @@
+import { Session } from "next-auth";
+import { MouseEventHandler } from "react";
+
 export interface BlockProps {
     image: string;
     title: string;
@@ -22,8 +25,11 @@ export interface IconProps {
     pathFill?: string;
 }
 
-// For testing purposes
-export interface User {
-    id: number;
-    name: string;
+export interface BackdropProps {
+    state?: boolean;
+    handler?: MouseEventHandler<HTMLDivElement>;
+}
+
+export interface PageSession {
+    session: Session | null;
 }
