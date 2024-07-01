@@ -2,6 +2,154 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* From Public Directory */
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Thin.ttf");
+    font-weight: 100;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-ExtraLight.ttf");
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Light.ttf");
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Medium.ttf");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-SemiBold.ttf");
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Bold.ttf");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-ExtraBold.ttf");
+    font-weight: 800;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-Black.ttf");
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-ThinItalic.ttf");
+    font-weight: 100;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-ExtraLightItalic.ttf");
+    font-weight: 200;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-LightItalic.ttf");
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts//Poppins-Italic.ttf");
+    font-weight: 400;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-MediumItalic.ttf");
+    font-weight: 500;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-SemiBoldItalic.ttf");
+    font-weight: 600;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-BoldItalic.ttf");
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-ExtraBoldItalic.ttf");
+    font-weight: 800;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins", sans-serif;
+    src: url("../../public/fonts/Poppins-BlackItalic.ttf");
+    font-weight: 900;
+    font-display: swap;
+    font-style: italic;
+}
+
 :root {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
