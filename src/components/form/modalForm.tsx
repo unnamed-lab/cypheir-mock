@@ -32,10 +32,8 @@ export default function ModalForm({
 
     useEffect(() => {
         if (session.data?.user) {
-            console.log("Modal redirect!");
             router.push("/");
         } else {
-            console.log("change inner");
             // I don't know why this didn't work
             // setInnerState((prev) => !prev);
             setInnerState(true);

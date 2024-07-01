@@ -4,10 +4,12 @@ import "@/styles/globals.css";
 import meta from "@/util/metadata";
 import { WebVitals } from "./web-vitals";
 import { MetadataProps } from "@/interface/ui";
-import { Footer } from "@/components/layout";
+import { Footer, Nav } from "@/components/layout";
 import { AuthProvider } from "@/context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/lib/auth";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -42,16 +44,20 @@ export async function generateMetadata({
     };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    // To retrieve the session cookie
+    const session = await getServerSession(authConfig);
+
     return (
         <html lang="en">
             <body className={poppins.className}>
                 {process.env.PROJECT_STATUS === "development" && <WebVitals />}
                 <AuthProvider>
+                    <Nav session={session} />
                     {children}
                     <ToastContainer />
                 </AuthProvider>

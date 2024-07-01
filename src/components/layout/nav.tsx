@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Brand } from "../ui";
@@ -10,10 +10,35 @@ import { LoginButtonProps } from "@/interface/form";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";
 import { signOut } from "next-auth/react";
+import { getUserData } from "@/lib/fetchUser";
+import { useUser } from "@/store";
 
 export default function Nav({ session }: PageSession) {
+    const { user, setUser } = useUser();
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        if (session?.user) {
+            const { name, email } = session.user;
+            if (
+                typeof name === "string" &&
+                typeof email === "string" &&
+                !localStorage.getItem("cyphmockuser")
+            ) {
+                getUserData(name, email)
+                    .then((data) => {
+                        setUserData(data);
+                        setUser("cyphmockuser", JSON.stringify(data));
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching data:", error);
+                    });
+            }
+        }
+    }, [session, setUser]);
+
     return (
-        <nav className="flex w-full items-center justify-between gap-2">
+        <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
             <Brand />
             <NavMenu session={session} />
         </nav>
@@ -86,8 +111,11 @@ function LoginButton({ url, handler }: LoginButtonProps) {
 }
 
 function SignOutButton() {
-    const handleSignOut = () => {
-        signOut();
+    const { removeUser } = useUser();
+
+    const handleSignOut = async () => {
+        await signOut();
+        removeUser("cyphmockuser");
     };
     return (
         <>
