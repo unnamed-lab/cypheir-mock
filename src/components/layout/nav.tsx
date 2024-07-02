@@ -7,11 +7,10 @@ import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
 import { PageSession } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth";
 import { signOut } from "next-auth/react";
 import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
+import { cn } from "@/lib/utils";
 
 export default function Nav({ session }: PageSession) {
     const { user, setUser } = useUser();
@@ -60,8 +59,16 @@ function NavMenu({ session }: PageSession) {
                         <LoginButton url="/" handler={loginHandler} />
                     ) : (
                         <>
-                            <AccountButton url="/" />
-                            <CreateButton url="/" />
+                            <NavButton
+                                name="Manage Mocks"
+                                className="bg-zinc-900 font-light text-white hover:bg-primary"
+                                url="/"
+                            />
+                            <NavButton
+                                name="Create Mock"
+                                className="bg-zinc-900 font-light text-white hover:bg-primary"
+                                url="/design"
+                            />
                             <SignOutButton />
                         </>
                     )}
@@ -158,31 +165,24 @@ function SignOutButton() {
     );
 }
 
-function AccountButton({ url }: { url: string }) {
+function NavButton({
+    name,
+    url,
+    className,
+}: {
+    name: string;
+    url: string;
+    className: string;
+}) {
     const router = useRouter();
     return (
         <>
             <Button
                 type="button"
-                className="bg-zinc-900 text-white hover:bg-primary"
+                className={className}
                 handler={() => router.push(url)}
             >
-                Manage Mocks
-            </Button>
-        </>
-    );
-}
-
-function CreateButton({ url }: { url: string }) {
-    const router = useRouter();
-    return (
-        <>
-            <Button
-                type="button"
-                className="bg-zinc-900 text-white hover:bg-primary"
-                handler={() => router.push(url)}
-            >
-                Create Mock
+                {name}
             </Button>
         </>
     );

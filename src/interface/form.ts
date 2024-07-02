@@ -1,4 +1,5 @@
 import {
+    AriaRole,
     ChangeEventHandler,
     Dispatch,
     HTMLInputAutoCompleteAttribute,
@@ -7,6 +8,8 @@ import {
 } from "react";
 
 export interface ButtonProps {
+    expandable?: boolean;
+    role?: AriaRole;
     className?: string;
     type?: "button" | "submit" | "reset";
     children: React.ReactNode;
@@ -38,4 +41,10 @@ export interface ModalFormProps {
 export interface LoginButtonProps {
     url: string;
     handler?: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface ComboBoxProps {
+    width?: number;
+    array: { value: string; label: string }[];
+    placeholder: string;
 }
