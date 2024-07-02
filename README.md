@@ -56,3 +56,5 @@ Licensed under the [MIT license](https://github.com/magicuidesign/magicui/blob/m
 ## Attribution
 
 <a target="_blank" href="https://icons8.com/icon/1yYcMrloqIfA/code">Code</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+<a target="_blank" herfe="https://www.iconfinder.com/icons/9109985/chevron_square_up_icon">Chevron</a> icon by <a target="_blank" href="https://www.iconfinder.com">IconFinder</a>
