@@ -32,7 +32,11 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    style={{ "--custom-width": `${width}px` } as React.CSSProperties}
+                    style={
+                        {
+                            "--custom-width": `${width}px`,
+                        } as React.CSSProperties
+                    }
                     className="w-[var(--custom-width)] !min-w-[200px] justify-between"
                 >
                     {value
@@ -42,7 +46,9 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                 </Button>
             </PopoverTrigger>
             <PopoverContent
-                style={{ "--custom-width": `${width}px` } as React.CSSProperties}
+                style={
+                    { "--custom-width": `${width}px` } as React.CSSProperties
+                }
                 className="w-[var(--custom-width)] !min-w-[200px] p-0"
             >
                 <Command>
