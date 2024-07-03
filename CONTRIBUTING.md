@@ -11,39 +11,38 @@ Thank you for your interest in contributing to Cypheir Mock! We appreciate your 
 
 2. **Clone your forked repository to your local machine**
 
-   ```bash
-   git clone https://github.com/<YOUR_USERNAME>/cypheir-mock.git
-   ```
+    ```bash
+    git clone https://github.com/<YOUR_USERNAME>/cypheir-mock.git
+    ```
 
 3. **Navigate to the project directory**
 
-   ```bash
-   cd cypheir-mock
-   ```
+    ```bash
+    cd cypheir-mock
+    ```
 
 4. **Create a new branch for your changes**
 
-   ```bash
-   git checkout -b my-new-branch
-   ```
+    ```bash
+    git checkout -b my-new-branch
+    ```
 
 5. **Install dependencies**
 
-   ```bash
-   pnpm i
-   ```
+    ```bash
+    pnpm i
+    ```
 
 6. **Create a `.env.local` file**
 
-   ```bash
-   touch .env.local && echo "PROJECT_STATUS=development" > .env.local
-   ```
+    ```bash
+    touch .env.local && echo "PROJECT_STATUS=development" > .env.local
+    ```
 
 7. **Run the project**
-   ```bash
-   pnpm dev
-   ```
-
+    ```bash
+    pnpm dev
+    ```
 
 ## Ask for Help
 
