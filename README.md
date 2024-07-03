@@ -5,7 +5,7 @@
     Generate, Mock and Test Your API
 </p>
 <div align="center">
-  <a href="https://github.com/magicuidesign/magicui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/unnamed-lab/cypheir-mock" /></a>
+  <a href="https://github.com/unnamed-lab/cypheir-mock/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/unnamed-lab/cypheir-mock" /></a>
   <a href="https://twitter.com/unnamedcodes"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/unnamedcodes" /></a>
   <a href="https://github.com/unnamed-lab/cypheir-mock/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
   <!-- <img alt="Discord" src="https://img.shields.io/discord/" /> -->
@@ -29,7 +29,7 @@ Coming soon!
 
 ## Contributing
 
-Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
+Visit our [contributing guide](https://github.com/unnamed-lab/cypheir-mock/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
 
 ## Let's talk
 
@@ -55,6 +55,12 @@ Licensed under the [MIT license](https://github.com/magicuidesign/magicui/blob/m
 
 ## Attribution
 
+This project was heavily inspired inspired by <a target="_blank" href="http://mocky.io/">Mocky.io</a> 😊💙
+
 <a target="_blank" href="https://icons8.com/icon/1yYcMrloqIfA/code">Code</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
 <a target="_blank" herfe="https://www.iconfinder.com/icons/9109985/chevron_square_up_icon">Chevron</a> icon by <a target="_blank" href="https://www.iconfinder.com">IconFinder</a>
+
+A few React components from <a target="_blank" href="https://ui.shadcn.com/">Shadcn</a>
+
+A few React components from <a target="_blank" href="https://magicui.design/">MagicUI</a>
