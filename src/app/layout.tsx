@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -62,6 +63,7 @@ export default async function RootLayout({
                     <ToastContainer />
                 </AuthProvider>
                 <Footer />
+                <Toaster />
             </body>
         </html>
     );

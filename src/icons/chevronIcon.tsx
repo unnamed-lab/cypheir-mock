@@ -1,10 +1,15 @@
 import { IconProps } from "@/interface/ui";
 import React from "react";
 
-export default function ChevronIcon({ width, height, className }: IconProps) {
+export default function ChevronIcon({
+    width,
+    height,
+    className,
+    pathFill,
+}: IconProps) {
     return (
         <svg
-            fill="currentColor"
+            fill={pathFill || "currentColor"}
             width={width || "24"}
             height={height || "24"}
             viewBox="-2 -2 24 24"

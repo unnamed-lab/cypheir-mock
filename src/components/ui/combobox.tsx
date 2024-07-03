@@ -37,7 +37,7 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                             "--custom-width": `${width}px`,
                         } as React.CSSProperties
                     }
-                    className="w-[var(--custom-width)] !min-w-[200px] justify-between"
+                    className="w-[var(--custom-width)] !min-w-[200px] max-w-full justify-between"
                 >
                     {value
                         ? array.find((array) => array.value === value)?.label
@@ -49,7 +49,7 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                 style={
                     { "--custom-width": `${width}px` } as React.CSSProperties
                 }
-                className="w-[var(--custom-width)] !min-w-[200px] p-0"
+                className="w-[var(--custom-width)] !min-w-[200px] max-w-full bg-slate-50 p-0"
             >
                 <Command>
                     <CommandInput placeholder={placeholder} />
@@ -68,6 +68,7 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                                         );
                                         setOpen(false);
                                     }}
+                                    className="ease border-1 cursor-pointer border border-transparent font-sans transition-all hover:border-b hover:border-t hover:border-b-slate-300 hover:border-t-slate-300"
                                 >
                                     <Check
                                         className={cn(
@@ -77,7 +78,10 @@ export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
                                                 : "opacity-0"
                                         )}
                                     />
-                                    {array.label}
+                                    <span className="mr-1 font-bold text-primary">
+                                        {array.value}
+                                    </span>{" "}
+                                    • {array.label}
                                 </CommandItem>
                             ))}
                         </CommandGroup>

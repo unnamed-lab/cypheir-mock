@@ -25,7 +25,9 @@ Server error responses (500 – 599):
 Examples include 500 Internal Server Error, 502 Bad Gateway, and 503 Service Unavailable.
 */
 
-const statusCodes: { label: string; value: string }[] = [
+import { IComboArray } from "@/interface/utils";
+
+const statusCodes: Array<IComboArray> = [
     { label: "Continue", value: "100" },
     { label: "Switching Protocols", value: "101" },
     { label: "OK", value: "200" },
