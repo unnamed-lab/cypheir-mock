@@ -62,7 +62,7 @@ function NavMenu({ session }: PageSession) {
                             <NavButton
                                 name="Manage Mocks"
                                 className="bg-zinc-900 font-light text-white hover:bg-primary"
-                                url="/"
+                                url="/design/manage"
                             />
                             <NavButton
                                 name="Create Mock"

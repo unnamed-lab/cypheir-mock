@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";
 import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -56,14 +57,18 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={poppins.className}>
-                {process.env.PROJECT_STATUS === "development" && <WebVitals />}
-                <AuthProvider>
-                    <Nav session={session} />
-                    {children}
-                    <ToastContainer />
-                </AuthProvider>
-                <Footer />
-                <Toaster />
+                <TooltipProvider>
+                    {process.env.PROJECT_STATUS === "development" && (
+                        <WebVitals />
+                    )}
+                    <AuthProvider>
+                        <Nav session={session} />
+                        {children}
+                        <ToastContainer />
+                    </AuthProvider>
+                    <Footer />
+                    <Toaster />
+                </TooltipProvider>
             </body>
         </html>
     );
