@@ -89,7 +89,7 @@ function SideNavigation() {
 
     return (
         <>
-            <div className="flex flex-col px-[7.5%] mt-3 sm:gap-4 sm:py-4">
+            <div className="mt-3 flex flex-col px-[7.5%] sm:gap-4 sm:py-4">
                 <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
                     <Sheet>
                         <SheetTrigger asChild>
@@ -235,7 +235,7 @@ function SignOut({ mode }: { mode: "mobile" | "desktop" }) {
     return mode === "mobile" ? (
         <Button
             onClick={handleSignOut}
-            className="mt-4 flex items-center gap-4 bg-red-500 text-base hover:bg-red-700 px-2.5 text-zinc-900 hover:text-foreground"
+            className="mt-4 flex items-center gap-4 bg-red-500 px-2.5 text-base text-zinc-900 hover:bg-red-700 hover:text-foreground"
         >
             {icon}
             {title}
@@ -245,7 +245,7 @@ function SignOut({ mode }: { mode: "mobile" | "desktop" }) {
             <TooltipTrigger asChild>
                 <Button
                     onClick={handleSignOut}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-100 hover:bg-red-600 text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8 p-1 font-black"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-100 p-1 font-black text-muted-foreground transition-colors hover:bg-red-600 hover:text-foreground md:h-8 md:w-8"
                 >
                     {icon}
                     <span className="sr-only">{title}</span>

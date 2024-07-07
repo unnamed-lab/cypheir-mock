@@ -94,7 +94,10 @@ function NavMenu({ session }: PageSession) {
 function GitHubRedirect() {
     return (
         <>
-            <Link href="https://github.com/unnamed-lab/cypheir-mock" target="_blank">
+            <Link
+                href="https://github.com/unnamed-lab/cypheir-mock"
+                target="_blank"
+            >
                 <Button
                     type="button"
                     className="hover:bg-white hover:outline hover:outline-1 hover:outline-black"
