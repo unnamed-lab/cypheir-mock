@@ -5,22 +5,23 @@ import Link from "next/link";
 import { Brand } from "../ui";
 import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
-import { NavButtonProps, PageSession } from "@/interface/ui";
+import { NavButtonProps, SessionUser } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
 import { signOut } from "next-auth/react";
 import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
 import Loading from "@/app/loading";
 import { cn } from "@/lib/utils";
+import { TUserSession } from "@/types/ui";
 
-export default function Nav({ session }: PageSession) {
+export default function Nav({ userSession }: { userSession?: TUserSession }) {
     const [loading, setLoading] = useState<boolean>(false);
     const { user, setUser } = useUser();
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        if (session?.user) {
-            const { name, email } = session.user;
+        if (userSession) {
+            const { name, email } = userSession;
             if (
                 typeof name === "string" &&
                 typeof email === "string" &&
@@ -36,19 +37,19 @@ export default function Nav({ session }: PageSession) {
                     });
             }
         }
-    }, [session, setUser]);
+    }, [userSession, setUser]);
 
     return (
         <>
             <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
                 <Brand />
-                <NavMenu session={session} />
+                <NavMenu session={userSession} />
             </nav>
         </>
     );
 }
 
-function NavMenu({ session }: PageSession) {
+function NavMenu({ session }: { session: TUserSession }) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
     const loginHandler = () => {

@@ -32,9 +32,9 @@ export interface BackdropProps {
     handler?: MouseEventHandler<HTMLDivElement>;
 }
 
-export interface PageSession {
-    session: Session | null;
-}
+// export interface PageSession {
+//     session?: Session | null;
+// }
 
 export interface ConfigDropdownProps {
     title: string;

@@ -9,7 +9,7 @@ export default async function ManageDashboard() {
 
     return (
         <main className="mb-4 mt-4 flex min-h-[70svh] flex-col gap-3 overflow-hidden font-sans md:min-h-[75svh] md:overflow-visible lg:px-[7.5%]">
-            <ManageMock user={session?.user} />
+            <ManageMock />
         </main>
     );
 }

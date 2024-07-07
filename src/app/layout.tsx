@@ -53,6 +53,7 @@ export default async function RootLayout({
 }>) {
     // To retrieve the session cookie
     const session = await getServerSession(authConfig);
+    const userSession = session?.user;
 
     return (
         <html lang="en">
@@ -62,7 +63,7 @@ export default async function RootLayout({
                         <WebVitals />
                     )}
                     <AuthProvider>
-                        <Nav session={session} />
+                        <Nav userSession={userSession} />
                         {children}
                         <ToastContainer />
                     </AuthProvider>
