@@ -2,13 +2,24 @@
 import { useState } from "react";
 import BoxReveal from "@/components/magicui/box-reveal";
 import { Button, ModalForm } from "@/components/form";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
+import { HomeStateProps } from "@/interface/ui";
 
-export default function HeroBox() {
+export default function HeroBox({ setState }: HomeStateProps) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
+    const session = useSession();
+    const router = useRouter();
 
     const loginHandler = () => {
-        setLoginModal((prev) => !prev);
+        if (!session) setLoginModal((prev) => !prev);
+        else {
+            setState(true);
+            router.push("/design/manage");
+        }
     };
+
     return (
         <div className="h-full w-full max-w-[100%] items-center justify-center overflow-hidden font-sans md:pt-5">
             <BoxReveal boxColor={"#1ca7ec"} width="100%" duration={0.5}>
