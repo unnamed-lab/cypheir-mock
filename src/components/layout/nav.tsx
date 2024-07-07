@@ -5,14 +5,16 @@ import Link from "next/link";
 import { Brand } from "../ui";
 import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
-import { PageSession } from "@/interface/ui";
+import { NavButtonProps, PageSession } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
 import { signOut } from "next-auth/react";
 import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
+import Loading from "@/app/loading";
 import { cn } from "@/lib/utils";
 
 export default function Nav({ session }: PageSession) {
+    const [loading, setLoading] = useState<boolean>(false);
     const { user, setUser } = useUser();
     const [userData, setUserData] = useState(null);
 
@@ -37,10 +39,12 @@ export default function Nav({ session }: PageSession) {
     }, [session, setUser]);
 
     return (
-        <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
-            <Brand />
-            <NavMenu session={session} />
-        </nav>
+        <>
+            <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
+                <Brand />
+                <NavMenu session={session} />
+            </nav>
+        </>
     );
 }
 
@@ -50,6 +54,7 @@ function NavMenu({ session }: PageSession) {
     const loginHandler = () => {
         setLoginModal((prev) => !prev);
     };
+
     return (
         <>
             <div className="hidden items-center gap-2 sm:flex">
@@ -89,7 +94,7 @@ function NavMenu({ session }: PageSession) {
 function GitHubRedirect() {
     return (
         <>
-            <Link href="https://github.com/unnamed-lab/cypheir-mock">
+            <Link href="https://github.com/unnamed-lab/cypheir-mock" target="_blank">
                 <Button
                     type="button"
                     className="hover:bg-white hover:outline hover:outline-1 hover:outline-black"
@@ -103,7 +108,6 @@ function GitHubRedirect() {
 }
 
 function LoginButton({ url, handler }: LoginButtonProps) {
-    const router = useRouter();
     return (
         <>
             <Button
@@ -165,22 +169,16 @@ function SignOutButton() {
     );
 }
 
-function NavButton({
-    name,
-    url,
-    className,
-}: {
-    name: string;
-    url: string;
-    className: string;
-}) {
+function NavButton({ name, url, className }: NavButtonProps) {
     const router = useRouter();
+    const handleRedirect = () => router.push(url);
+
     return (
         <>
             <Button
                 type="button"
                 className={className}
-                handler={() => router.push(url)}
+                handler={handleRedirect}
             >
                 {name}
             </Button>

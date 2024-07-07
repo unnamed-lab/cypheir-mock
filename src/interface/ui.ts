@@ -1,6 +1,7 @@
 import { Session } from "next-auth";
-import { MouseEventHandler } from "react";
+import { Dispatch, FC, MouseEventHandler, SetStateAction } from "react";
 import { IComboArray } from "./utils";
+import { LucideProps } from "lucide-react";
 
 export interface BlockProps {
     image: string;
@@ -57,4 +58,21 @@ export interface SessionUser {
     name?: string | null;
     email?: string | null;
     image?: string | null;
+}
+
+export interface SideBarNavigationItems {
+    title: string;
+    url: string;
+    icon: any;
+    state?: "active" | "inactive";
+}
+
+export interface HomeStateProps {
+    setState: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface NavButtonProps {
+    name: string;
+    url: string;
+    className: string;
 }
