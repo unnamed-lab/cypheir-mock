@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Combobox } from "../ui/combobox";
@@ -19,6 +20,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function DesignConfig({ className }: { className?: string }) {
+    const [editor, setEditor] = React.useState<string>("basic");
+
     const httpHeaders = `    {
         "Cache-Control": "max-age=3600",
         "X-Custom-Header": "MyCustomValue"
@@ -50,6 +53,10 @@ export default function DesignConfig({ className }: { className?: string }) {
                     be built and formatted.
                 </p>
             </div>
+            <div className="flex items-center gap-3">
+                Choose Design Editor:{" "}
+                <RadioDropdownMenu setEditor={setEditor} />
+            </div>
             <ConfigTextarea
                 title="Mock Identifier"
                 placeholder={"Cypheir Mock Template 😉💙"}
@@ -75,34 +82,43 @@ export default function DesignConfig({ className }: { className?: string }) {
                 width={430}
             />
 
-            <ConfigDropdown
-                title="Charset"
-                required
-                list={charset}
-                placeholder="Charset"
-                info="The Charset is used for encoding or decoding your payload."
-                width={250}
-            />
+            {editor === "advance" && (
+                <ConfigDropdown
+                    title="Charset"
+                    required
+                    list={charset}
+                    placeholder="Charset"
+                    info="The Charset is used for encoding or decoding your payload."
+                    width={250}
+                />
+            )}
 
-            <ConfigTextarea
-                title="HTTP Headers "
-                placeholder={httpHeaders}
-                info="Customize the HTTP headers sent in the response. Define the headers as a JSON object."
-            />
+            {editor === "advance" && (
+                <ConfigTextarea
+                    title="HTTP Headers "
+                    placeholder={httpHeaders}
+                    info="Customize the HTTP headers sent in the response. Define the headers as a JSON object."
+                />
+            )}
 
             <ConfigTextarea
                 title="HTTP Response Body "
                 placeholder={httpBody}
                 height={250}
             />
-            <ConfigTextarea
-                title="Mock Secret Token"
-                placeholder={"CYqQRkxiKAtw9JAUyDHuJR6VMJsJdGMahRnuGGJTbyI= 🤫"}
-                info={
-                    "If left blank, a random secret will be generated for updating or deleting your mock."
-                }
-                height={15}
-            />
+
+            {editor === "advance" && (
+                <ConfigTextarea
+                    title="Mock Secret Token"
+                    placeholder={
+                        "CYqQRkxiKAtw9JAUyDHuJR6VMJsJdGMahRnuGGJTbyI= 🤫"
+                    }
+                    info={
+                        "If left blank, a random secret will be generated for updating or deleting your mock."
+                    }
+                    height={15}
+                />
+            )}
         </section>
     );
 }
@@ -191,29 +207,36 @@ function ConfigTextarea({
     );
 }
 
-export function DropdownMenuRadioGroupDemo() {
-    const [position, setPosition] = React.useState("bottom");
+export function RadioDropdownMenu({
+    setEditor,
+}: {
+    setEditor: React.Dispatch<React.SetStateAction<string>>;
+}) {
+    const [position, setPosition] = React.useState<string>("basic");
+
+    React.useEffect(() => {
+        setEditor(position);
+    }, [position, setEditor]);
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline">Open</Button>
+                <Button variant="outline" className="capitalize">
+                    Select Build Settings [{position}]
+                </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+            <DropdownMenuContent className="w-56 bg-slate-50 font-sans">
+                <DropdownMenuLabel>Build Setting</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuRadioGroup
                     value={position}
                     onValueChange={setPosition}
                 >
-                    <DropdownMenuRadioItem value="top">
-                        Top
+                    <DropdownMenuRadioItem value="basic">
+                        Basic
                     </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="bottom">
-                        Bottom
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="right">
-                        Right
+                    <DropdownMenuRadioItem value="advanced">
+                        Advanced
                     </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
             </DropdownMenuContent>
