@@ -35,17 +35,10 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { SideBarNavigationItems } from "@/interface/ui";
 import { signOut, useSession } from "next-auth/react";
 import { useUser } from "@/store";
+import { DesignBreadcrumb } from "@/components/design";
 
 export default function DesignLayout({
     children,
@@ -132,23 +125,8 @@ function SideNavigation() {
                         </SheetContent>
                     </Sheet>
 
-                    <Breadcrumb className="hidden md:flex">
-                        <BreadcrumbList>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="/design">Dashboard</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="/design/manage">
-                                        Manage Mocks
-                                    </Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
+                    <DesignBreadcrumb />
+
                     <div className="relative ml-auto flex-1 md:grow-0">
                         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                         <Input
