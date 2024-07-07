@@ -27,7 +27,11 @@ export default function DesignBreadcrumb() {
                             ) : null}
                             <BreadcrumbItem key={"item" + i}>
                                 <BreadcrumbLink key={"link" + i} asChild>
-                                    <Link key={"anchor" + i} href={el.url} className="capitalize">
+                                    <Link
+                                        key={"anchor" + i}
+                                        href={el.url}
+                                        className="capitalize"
+                                    >
                                         {el.title}
                                     </Link>
                                 </BreadcrumbLink>
