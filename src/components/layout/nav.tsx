@@ -5,20 +5,23 @@ import Link from "next/link";
 import { Brand } from "../ui";
 import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
-import { PageSession } from "@/interface/ui";
+import { NavButtonProps, SessionUser } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
 import { signOut } from "next-auth/react";
 import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
+import Loading from "@/app/loading";
 import { cn } from "@/lib/utils";
+import { TUserSession } from "@/types/ui";
 
-export default function Nav({ session }: PageSession) {
+export default function Nav({ userSession }: { userSession?: TUserSession }) {
+    const [loading, setLoading] = useState<boolean>(false);
     const { user, setUser } = useUser();
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        if (session?.user) {
-            const { name, email } = session.user;
+        if (userSession) {
+            const { name, email } = userSession;
             if (
                 typeof name === "string" &&
                 typeof email === "string" &&
@@ -34,22 +37,25 @@ export default function Nav({ session }: PageSession) {
                     });
             }
         }
-    }, [session, setUser]);
+    }, [userSession, setUser]);
 
     return (
-        <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
-            <Brand />
-            <NavMenu session={session} />
-        </nav>
+        <>
+            <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
+                <Brand />
+                <NavMenu session={userSession} />
+            </nav>
+        </>
     );
 }
 
-function NavMenu({ session }: PageSession) {
+function NavMenu({ session }: { session: TUserSession }) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
     const loginHandler = () => {
         setLoginModal((prev) => !prev);
     };
+
     return (
         <>
             <div className="hidden items-center gap-2 sm:flex">
@@ -89,7 +95,10 @@ function NavMenu({ session }: PageSession) {
 function GitHubRedirect() {
     return (
         <>
-            <Link href="https://github.com/unnamed-lab/cypheir-mock">
+            <Link
+                href="https://github.com/unnamed-lab/cypheir-mock"
+                target="_blank"
+            >
                 <Button
                     type="button"
                     className="hover:bg-white hover:outline hover:outline-1 hover:outline-black"
@@ -103,7 +112,6 @@ function GitHubRedirect() {
 }
 
 function LoginButton({ url, handler }: LoginButtonProps) {
-    const router = useRouter();
     return (
         <>
             <Button
@@ -165,22 +173,16 @@ function SignOutButton() {
     );
 }
 
-function NavButton({
-    name,
-    url,
-    className,
-}: {
-    name: string;
-    url: string;
-    className: string;
-}) {
+function NavButton({ name, url, className }: NavButtonProps) {
     const router = useRouter();
+    const handleRedirect = () => router.push(url);
+
     return (
         <>
             <Button
                 type="button"
                 className={className}
-                handler={() => router.push(url)}
+                handler={handleRedirect}
             >
                 {name}
             </Button>

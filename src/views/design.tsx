@@ -5,34 +5,11 @@ import {
     DesignPreview,
     DesignHeading,
 } from "@/components/design";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { ChevronIcon } from "@/icons";
 
 export default function HeroDesign() {
     return (
         <div className="relative w-full">
-            <Breadcrumb className="hidden md:flex">
-                <BreadcrumbList>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="/design">Dashboard</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="/design">Create Mocks</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
             <DesignHeading>Design your Mock</DesignHeading>
             <section className="my-6 flex h-full min-h-screen w-full flex-col gap-5 lg:flex-row">
                 <DesignConfig className="w-full rounded-md px-6 py-3 shadow-md outline outline-1 outline-zinc-200 lg:w-6/12" />

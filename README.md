@@ -19,8 +19,11 @@ Cypheir Mock is a tool that allows developers to create mock APIs quickly. Wheth
 ## Features
 
 -   API Generation: Easily create API endpoints with customizable routes, request parameters, and response data.
+
 -   Mocking Capabilities: Generate mock data based on your API specification. This ensures accurate testing of input parameter validation and edge cases.
+
 -   Integration Testing: Accelerate development lifecycles by using mock endpoints for third-party APIs. Account for random failures, slow response times, and other scenarios.
+
 -   Easy Setup: Get started in minutes with our straightforward setup instructions.
 
 ## Documentation

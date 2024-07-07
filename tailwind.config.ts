@@ -10,7 +10,14 @@ const config: Config = {
         extend: {
             colors: {
                 primary: "#1ca7ec",
-                popover: "#fefefe",
+                "primary-foreground": "hsl(210 40% 98%)",
+                background: "#fefefe",
+                foreground: "hsl(222.2 47.4% 11.2%)",
+                muted: "hsl(210 40% 96.1%)",
+                "muted-foreground": "hsl(215.4 16.3% 46.9%)",
+                popover: "hsl(0 0% 100%)",
+                "popover-foreground": "hsl(222.2 47.4% 11.2%)",
+                "secondary-foreground": "hsl(222.2 47.4% 11.2%)",
             },
             fontFamily: {
                 sans: "Poppins,Arial,san-serif",
