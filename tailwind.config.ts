@@ -10,6 +10,7 @@ const config: Config = {
         extend: {
             colors: {
                 primary: "#1ca7ec",
+                popover: "#fefefe",
             },
             fontFamily: {
                 sans: "Poppins,Arial,san-serif",
