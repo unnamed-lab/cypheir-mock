@@ -1,5 +1,6 @@
 import { Session } from "next-auth";
 import { MouseEventHandler } from "react";
+import { IComboArray } from "./utils";
 
 export interface BlockProps {
     image: string;
@@ -32,4 +33,28 @@ export interface BackdropProps {
 
 export interface PageSession {
     session: Session | null;
+}
+
+export interface ConfigDropdownProps {
+    title: string;
+    required?: boolean;
+    info?: string;
+    list: Array<IComboArray>;
+    placeholder: string;
+    width?: number;
+}
+
+export interface ConfigTextareaProps {
+    title: string;
+    required?: boolean;
+    info?: string;
+    placeholder: string;
+    width?: number;
+    height?: number;
+}
+
+export interface SessionUser {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
 }
