@@ -86,7 +86,6 @@ function SideNavigation() {
         },
     ];
 
-
     return (
         <>
             <div className="mt-3 flex flex-col px-[7.5%] sm:gap-4 sm:py-4">
@@ -164,7 +163,9 @@ function SideNavigation() {
                             <DropdownMenuItem>Settings</DropdownMenuItem>
                             <DropdownMenuItem>Support</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={handleSignOut}>Logout</DropdownMenuItem>
+                            <DropdownMenuItem onClick={handleSignOut}>
+                                Logout
+                            </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </header>
