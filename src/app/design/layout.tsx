@@ -55,7 +55,13 @@ export default function DesignLayout({
 
 function SideNavigation() {
     const session = useSession();
+    const { removeUser } = useUser();
     const user = session?.data?.user;
+
+    const handleSignOut = async () => {
+        await signOut();
+        removeUser("cyphmockuser");
+    };
 
     const navigation: Array<SideBarNavigationItems> = [
         {
@@ -79,6 +85,7 @@ function SideNavigation() {
             icon: <Settings className="h-5 w-5" />,
         },
     ];
+
 
     return (
         <>
@@ -157,7 +164,7 @@ function SideNavigation() {
                             <DropdownMenuItem>Settings</DropdownMenuItem>
                             <DropdownMenuItem>Support</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Logout</DropdownMenuItem>
+                            <DropdownMenuItem onClick={handleSignOut}>Logout</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </header>
