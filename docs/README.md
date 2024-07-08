@@ -4,7 +4,7 @@ Mock CYPHEIR is an object-oriented mock API generator that allows you to create 
 
 | Data Fetching Flow                                         | Basic User Flow                                     |
 | ---------------------------------------------------------- | --------------------------------------------------- |
-| ![Mock API Router Blueprints](./api-server-blueprints.png) | ![Mock API Data Fetching](./data-fetching-flow.png) |
+| ![Mock API Router Blueprints](./data-fetching-flow.png) | ![Mock API Data Fetching](./basic-user-flow.png) |
 
 <br/>
 
