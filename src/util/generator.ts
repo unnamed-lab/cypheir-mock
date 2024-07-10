@@ -26,9 +26,15 @@ type TAttributeProps =
     | boolean
     | Array<string | number | boolean | object>;
 
+type TGenerateName = {
+    names?: number;
+    gender?: TGenderProps;
+    initial?: boolean;
+};
+
 type TOptionsProps = {
     type: "name" | "email" | "custom";
-    setAttribute: (args?: TAttributeProps) => TAttributeProps;
+    setAttribute?: TGenerateName | (() => TAttributeProps);
 };
 
 type TGenerateProperty = Array<IGenerateProperty>;
@@ -68,6 +74,7 @@ export class GenerateMock {
         gender: TGenderProps = "mixed",
         initial: boolean = false
     ): string {
+        if (names < 1) throw new Error("Amount of mock name must be greater or equal to one")
         let nameArr: string[] = [];
         let nameSex: string[] = [];
 
@@ -103,12 +110,17 @@ export class GenerateMock {
         let attr: TAttributeProps = "";
 
         if (attribute.opts) {
-            const output = attribute.opts.setAttribute();
-
             if (attribute.opts.type === "custom") {
-                attr = output;
+                let callback = attribute.opts
+                    .setAttribute as () => TAttributeProps;
+                attr = callback;
             } else if (attribute.opts.type === "name") {
-                attr = this.generateName();
+                const genName = attribute.opts.setAttribute as TGenerateName;
+                attr = this.generateName(
+                    genName?.names,
+                    genName?.gender,
+                    genName?.initial
+                );
             }
         } else {
             attr = attribute.attribute;

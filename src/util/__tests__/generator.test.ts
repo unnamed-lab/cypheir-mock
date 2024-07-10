@@ -28,11 +28,12 @@ describe("mock generato class", () => {
         const item = new GenerateMock(1);
         item.add("name", {
             attribute: "unnamedcodes",
-            opts: { type: "name", setAttribute: () => "" },
+            opts: {
+                type: "name",
+                setAttribute: { names: 2, gender: "female" },
+            },
         });
-
         const output = item.getProps();
-        console.log(output);
         expect(output).toBeTruthy();
     });
 });
