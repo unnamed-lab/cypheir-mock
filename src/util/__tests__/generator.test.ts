@@ -23,4 +23,16 @@ describe("mock generato class", () => {
             { title: "name", property: "unnamedcodes" },
         ]);
     });
+
+    it("should generate new mock item - name attribute", () => {
+        const item = new GenerateMock(1);
+        item.add("name", {
+            attribute: "unnamedcodes",
+            opts: { type: "name", setAttribute: () => "" },
+        });
+
+        const output = item.getProps();
+        console.log(output);
+        expect(output).toBeTruthy();
+    });
 });

@@ -1,9 +1,23 @@
 //  Mock Object Generator
 
+import { female, male } from "@/data";
+
 interface IGeneratorOptions {
     id: "digits" | "random";
     indexLength?: number;
 }
+
+interface IGenerateAttribute {
+    attribute: TAttributeProps;
+    opts?: TOptionsProps;
+}
+
+interface IGenerateProperty {
+    title: string;
+    property: TAttributeProps;
+}
+
+type TGenderProps = "male" | "female" | "mixed";
 
 type TAttributeProps =
     | string
@@ -16,16 +30,6 @@ type TOptionsProps = {
     type: "name" | "email" | "custom";
     setAttribute: (args?: TAttributeProps) => TAttributeProps;
 };
-
-interface IGenerateAttribute {
-    attribute: TAttributeProps;
-    opts?: TOptionsProps;
-}
-
-interface IGenerateProperty {
-    title: string;
-    property: TAttributeProps;
-}
 
 type TGenerateProperty = Array<IGenerateProperty>;
 
@@ -51,7 +55,7 @@ export class GenerateMock {
             .substring(2, 2 + length);
     }
 
-    private generateInt(min: number, max: number): number | undefined {
+    private generateInt(min: number, max: number): number {
         if (min < 0)
             throw new Error(
                 "The minimum value should be equal to or greater than zero."
@@ -59,11 +63,38 @@ export class GenerateMock {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    private generateName(
+        names: number = 2,
+        gender: TGenderProps = "mixed",
+        initial: boolean = false
+    ): string {
+        let nameArr: string[] = [];
+        let nameSex: string[] = [];
+
+        if (gender === "male") nameSex = male;
+        else if (gender === "female") nameSex = female;
+        else nameSex = male.concat(female);
+
+        for (let index = 0; index < names; index++) {
+            nameArr.push(nameSex[this.generateInt(0, nameSex.length)]);
+        }
+
+        if (initial) {
+            return nameArr
+                .map((el, i) => {
+                    return i === 1 ? `${el[0]}.` : el;
+                })
+                .join(" ");
+        }
+
+        return nameArr.join(" ");
+    }
+
     // GLOBAL METHODS
 
     /*
         build()
-        add(title)
+        add(title, opts)
         remove()
     */
 
@@ -76,13 +107,14 @@ export class GenerateMock {
 
             if (attribute.opts.type === "custom") {
                 attr = output;
+            } else if (attribute.opts.type === "name") {
+                attr = this.generateName();
             }
         } else {
             attr = attribute.attribute;
         }
 
-        output = { title, property: attr };
-        this.propertyBox.push(output);
+        this.propertyBox.push({ title, property: attr });
         return this;
     }
 
