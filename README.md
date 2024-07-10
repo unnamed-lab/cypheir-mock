@@ -4,12 +4,11 @@
 <p align="center">
     Generate, Mock and Test Your API
 </p>
+
 <div align="center">
   <a href="https://github.com/unnamed-lab/cypheir-mock/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/unnamed-lab/cypheir-mock" /></a>
   <a href="https://twitter.com/unnamedcodes"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/unnamedcodes" /></a>
   <a href="https://github.com/unnamed-lab/cypheir-mock/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
-  <!-- <img alt="Discord" src="https://img.shields.io/discord/" /> -->
-  
 </div>
 
 ## Description
@@ -32,7 +31,7 @@ Coming soon!
 
 ## Contributing
 
-Visit our [contributing guide](https://github.com/unnamed-lab/cypheir-mock/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
+Visit our [contributing guide](https://github.com/unnamed-lab/cypheir-mock/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to setup!
 
 ## Let's talk
 
