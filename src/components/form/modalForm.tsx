@@ -5,7 +5,7 @@ import Button from "./button";
 import { GitHubIcon } from "@/icons";
 import { ModalFormProps } from "@/interface/form";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ModalForm({
     OAuth = false,
@@ -15,6 +15,7 @@ export default function ModalForm({
 }: ModalFormProps) {
     const session = useSession();
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     const [innerState, setInnerState] = useState<boolean>(false);
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -22,7 +23,10 @@ export default function ModalForm({
     };
 
     const handleGitHub = async () => {
-        signIn("github").then(console.log);
+        const redirectUrl = searchParams.get("redirect") ?? "/";
+        signIn("github", {
+            callbackUrl: redirectUrl,
+        }).then(console.log);
     };
 
     const closeModal = () => {
