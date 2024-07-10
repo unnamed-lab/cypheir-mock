@@ -13,7 +13,7 @@ export default function HeroBox({ setState }: HomeStateProps) {
     const router = useRouter();
 
     const loginHandler = () => {
-        if (!session) setLoginModal((prev) => !prev);
+        if (session.status !== "authenticated") setLoginModal((prev) => !prev);
         else {
             setState(true);
             router.push("/design/manage");
