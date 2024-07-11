@@ -1,5 +1,6 @@
 //  Mock Object Generator
 
+import { randomUUID } from "crypto";
 import { countryCodes, female, male } from "@/data";
 
 interface IGeneratorOptions {
@@ -317,5 +318,28 @@ export class GenerateMock {
 
     getProps() {
         return this.propertyBox;
+    }
+
+    compile() {
+        const arr = this.propertyBox.map((el, i) => {
+            const output: Record<string, string> = el.reduce(
+                (obj: any, item: IGenerateProperty) => {
+                    obj[String(item.title).replace(" ", "_")] = item.property;
+                    return obj;
+                },
+                { _id: this.options.id === "digits" ? i + 1 : randomUUID() }
+            );
+            return output;
+        });
+
+        return arr.sort((a, b) => {
+            if (typeof a._id === "number" && typeof b._id === "number") {
+                return a._id - b._id;
+            } else {
+                if (a._id > b._id) return 1;
+                if (a._id < b._id) return -1;
+                return 0;
+            }
+        });
     }
 }

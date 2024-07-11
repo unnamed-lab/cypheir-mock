@@ -168,7 +168,85 @@ describe("mock generator class", () => {
             },
         });
         const output = item.getProps();
-        console.log(output);
+        expect(output).toHaveLength(5);
+    });
+
+    it("should compile new mock bundle - auto increment", () => {
+        const item = new GenerateMock(5);
+        item.add("name", {
+            opts: {
+                type: "name",
+                setAttribute: { names: 2, gender: "male" },
+            },
+        });
+        item.add("age", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: { min: 18, max: 90 } },
+            },
+        });
+        item.add("email", {
+            opts: { type: "email", setAttribute: { digits: true } },
+        });
+        item.add("password", {
+            opts: {
+                type: "password",
+                setAttribute: { length: 8, type: "alpahnumeric" },
+            },
+        });
+        item.add("phone number", {
+            opts: {
+                type: "mobile",
+                setAttribute: { country: "united kingdom" },
+            },
+        });
+        item.add("bvn", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: 11 },
+            },
+        });
+        const output = item.compile();
+        expect(output).toHaveLength(5);
+    });
+
+    it("should compile new mock bundle - unique string", () => {
+        const item = new GenerateMock(5, { id: "random" });
+        item.add("name", {
+            opts: {
+                type: "name",
+                setAttribute: { names: 2, gender: "male" },
+            },
+        });
+        item.add("age", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: { min: 18, max: 90 } },
+            },
+        });
+        item.add("email", {
+            opts: { type: "email", setAttribute: { digits: true } },
+        });
+        item.add("password", {
+            opts: {
+                type: "password",
+                setAttribute: { length: 8, type: "alpahnumeric" },
+            },
+        });
+        item.add("phone number", {
+            opts: {
+                type: "mobile",
+                setAttribute: { country: "united kingdom" },
+            },
+        });
+        item.add("bvn", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: 11 },
+            },
+        });
+        const output = item.compile();
+        // console.log(output);
         expect(output).toHaveLength(5);
     });
 });
