@@ -68,4 +68,3 @@ A few React components from <a target="_blank" href="https://ui.shadcn.com/">Sha
 A few React components from <a target="_blank" href="https://magicui.design/">MagicUI</a>
 
 Be shout out to <a href="https://whimsical.com/" style="font-weight: 600;">Whimsical</a> for the AI powered flowchart and mind map generator!
-
