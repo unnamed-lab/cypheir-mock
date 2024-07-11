@@ -48,13 +48,25 @@ type TGeneratePassword = {
     type: "numeric" | "alpahnumeric";
 };
 
+type TGenerateDigits = {
+    length: number | { min?: number; max: number };
+};
+
 type TOptionsProps = {
-    type: "name" | "email" | "mobile" | "phone" | "custom" | "password";
+    type:
+        | "name"
+        | "email"
+        | "mobile"
+        | "phone"
+        | "custom"
+        | "password"
+        | "digits";
     setAttribute?:
         | TGenerateName
         | TGenerateEmail
         | TGenerateMobile
         | TGeneratePassword
+        | TGenerateDigits
         | (() => TAttributeProps);
 };
 
@@ -173,6 +185,29 @@ export class GenerateMock {
         return `${countryCode} ${fmtNumber}`;
     }
 
+    private generateDigits(value: TGenerateDigits): number {
+        if (typeof value.length === "number") {
+            if (value.length < 1) {
+                throw new Error(
+                    "The minimum digit length is one. Enter a value greater or equal to one."
+                );
+            }
+
+            return this.generateInt(
+                Math.pow(10, value.length - 1),
+                Math.pow(10, value.length) - 1
+            );
+        } else {
+            const { min, max } = value.length;
+            if ((min as number) < 1)
+                throw new Error("Enter a value greater or equal to one.");
+            else if (max < (min as number))
+                throw new Error("Enter a value greater than the minimum value");
+
+            return this.generateInt(min || ((min as undefined) ?? 0), max);
+        }
+    }
+
     private getNameProp(index: number): string {
         const name = this.propertyBox[index]?.filter(
             (el) =>
@@ -235,6 +270,14 @@ export class GenerateMock {
                             genPassword.length as number
                         );
                     }
+                    break;
+                case "digits":
+                    const genDigits = attribute.opts
+                        .setAttribute as TGenerateDigits;
+                    attr =
+                        typeof genDigits.length === "number"
+                            ? this.generateDigits(genDigits)
+                            : this.generateDigits(genDigits);
                     break;
                 default:
                     throw new Error("Please select an attribute type.");

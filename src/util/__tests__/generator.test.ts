@@ -120,12 +120,30 @@ describe("mock generator class", () => {
         expect(output).toHaveLength(1);
     });
 
+    it("should generate new mock item digits type", () => {
+        const item = new GenerateMock(1);
+        item.add("bvn", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: 11 },
+            },
+        });
+        const output = item.getProps()[0];
+        expect(output).toHaveLength(1);
+    });
+
     it("should generate new mock bundle", () => {
         const item = new GenerateMock(5);
         item.add("name", {
             opts: {
                 type: "name",
                 setAttribute: { names: 2, gender: "male" },
+            },
+        });
+        item.add("age", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: { min: 18, max: 90 } },
             },
         });
         item.add("email", {
@@ -141,6 +159,12 @@ describe("mock generator class", () => {
             opts: {
                 type: "mobile",
                 setAttribute: { country: "united kingdom" },
+            },
+        });
+        item.add("bvn", {
+            opts: {
+                type: "digits",
+                setAttribute: { length: 11 },
             },
         });
         const output = item.getProps();
