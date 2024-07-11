@@ -58,7 +58,7 @@ type TOptionsProps = {
         | (() => TAttributeProps);
 };
 
-type TGenerateProperty = Array<IGenerateProperty>;
+type TGenerateProperty = Array<IGenerateProperty>[];
 
 export class GenerateMock {
     private readonly count: number;
@@ -122,12 +122,13 @@ export class GenerateMock {
     }
 
     private generateEmail(
+        index: number,
         username: string = "",
         domain: string = "cypheir.xyz",
         digits: boolean = false
     ): string {
         //  FORMAT: [username][digits?]@[domain] e.g unnamed001@cypheir.xyz
-        const checkUser = this.getNameProp();
+        const checkUser = this.getNameProp(index);
         const userAlias = username
             ? username
             : checkUser
@@ -173,69 +174,102 @@ export class GenerateMock {
         return `${countryCode} ${fmtNumber}`;
     }
 
-    private getNameProp(): string {
-        const name = this.propertyBox.filter(
-            (obj) =>
-                obj.title === "name" || "username" || "fullname" || "firstname"
+    private getNameProp(index: number): string {
+        const name = this.propertyBox[index]?.filter(
+            (el) =>
+                el.title === "name" || "username" || "fullname" || "firstname"
         );
-        return name[0] ? `${name[0]?.property}` : "";
+        return (name?.[0]?.property as string) ?? "";
     }
 
-    // GLOBAL METHODS
-
-    add(title: string, attribute: IGenerateAttribute) {
+    private configureProperty(
+        index: number,
+        title: string,
+        attribute: IGenerateAttribute
+    ) {
         let attr: TAttributeProps = "";
         if (attribute.opts) {
-            if (attribute.opts.type === "custom") {
-                let callback = attribute.opts
-                    .setAttribute as () => TAttributeProps;
-                attr = callback;
-            } else if (attribute.opts.type === "name") {
-                const genName = attribute.opts.setAttribute as TGenerateName;
-                attr = this.generateName(
-                    genName?.names,
-                    genName?.gender,
-                    genName?.initial
-                );
-            } else if (attribute.opts.type === "email") {
-                const genEmail = attribute.opts.setAttribute as TGenerateEmail;
-                attr = this.generateEmail(
-                    genEmail?.username,
-                    genEmail?.domain,
-                    genEmail?.digits
-                );
-            } else if (attribute.opts.type === ("mobile" || "phone")) {
-                const genMobile = attribute.opts
-                    .setAttribute as TGenerateMobile;
-                attr = this.generateMobile(
-                    genMobile?.country,
-                    genMobile?.length
-                );
-            } else if (attribute.opts.type === "password") {
-                const genPassword = attribute.opts
-                    .setAttribute as TGeneratePassword;
-
-                if (genPassword.type === "numeric") {
-                    attr = this.generateInt(
-                        Math.pow(10, (genPassword.length as number) - 1),
-                        Math.pow(10, genPassword.length as number) - 1
+            const setType = attribute.opts.type;
+            switch (setType) {
+                case "custom":
+                    let callback = attribute.opts
+                        .setAttribute as () => TAttributeProps;
+                    attr = callback;
+                    break;
+                case "name":
+                    const genName = attribute.opts
+                        .setAttribute as TGenerateName;
+                    attr = this.generateName(
+                        genName?.names,
+                        genName?.gender,
+                        genName?.initial
                     );
-                } else {
-                    attr = this.generateString(genPassword.length as number);
-                }
+                    break;
+                case "email":
+                    const genEmail = attribute.opts
+                        .setAttribute as TGenerateEmail;
+                    attr = this.generateEmail(
+                        index,
+                        genEmail?.username,
+                        genEmail?.domain,
+                        genEmail?.digits
+                    );
+                    break;
+                case "mobile" || "phone":
+                    const genMobile = attribute.opts
+                        .setAttribute as TGenerateMobile;
+                    attr = this.generateMobile(
+                        genMobile?.country,
+                        genMobile?.length
+                    );
+                    break;
+                case "password":
+                    const genPassword = attribute.opts
+                        .setAttribute as TGeneratePassword;
+                    if (genPassword.type === "numeric") {
+                        attr = this.generateInt(
+                            Math.pow(10, (genPassword.length as number) - 1),
+                            Math.pow(10, genPassword.length as number) - 1
+                        );
+                    } else {
+                        attr = this.generateString(
+                            genPassword.length as number
+                        );
+                    }
+                    break;
+                default:
+                    throw new Error("Please select an attribute type.");
             }
         } else {
             if (attribute.attribute as undefined) attr = "";
             attr = attribute.attribute as TAttributeProps;
         }
 
-        this.propertyBox.push({ title, property: attr });
+        return { title, property: attr };
+    }
+
+    // GLOBAL METHODS
+
+    add(title: string, attribute: IGenerateAttribute) {
+        if (!this.propertyBox.length) {
+            for (let index = 0; index < this.count; index++) {
+                const item = this.configureProperty(index, title, attribute);
+                this.propertyBox.push([item]);
+            }
+        } else {
+            this.propertyBox.map((el, index) => {
+                const item = this.configureProperty(index, title, attribute);
+                el.push(item);
+            });
+        }
         return this;
     }
 
     remove(title: string) {
-        const index = this.propertyBox.findIndex((obj) => obj.title === title);
-        this.propertyBox.splice(index, 1);
+        this.propertyBox.map((el) => {
+            const index = el.findIndex((obj) => obj.title === title);
+            el.splice(index, 1);
+        });
         return this;
     }
 
