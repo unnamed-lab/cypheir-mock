@@ -211,7 +211,7 @@ describe("mock generator class", () => {
     });
 
     it("should compile new mock bundle - unique string", () => {
-        const item = new GenerateMock(5, { id: "random" });
+        const item = new GenerateMock(10, { id: "random", version: 1 });
         item.add("name", {
             opts: {
                 type: "name",
@@ -246,7 +246,6 @@ describe("mock generator class", () => {
             },
         });
         const output = item.compile();
-        // console.log(output);
-        expect(output).toHaveLength(5);
+        expect(output).toHaveLength(10);
     });
 });

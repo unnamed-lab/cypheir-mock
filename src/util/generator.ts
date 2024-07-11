@@ -2,83 +2,36 @@
 
 import { randomUUID } from "crypto";
 import { countryCodes, female, male } from "@/data";
-
-interface IGeneratorOptions {
-    id: "digits" | "random";
-    indexLength?: number;
-}
-
-interface IGenerateAttribute {
-    attribute?: TAttributeProps;
-    opts?: TOptionsProps;
-}
-
-interface IGenerateProperty {
-    title: string;
-    property: TAttributeProps;
-}
-
-type TGenderProps = "male" | "female" | "mixed";
-
-type TAttributeProps =
-    | string
-    | number
-    | object
-    | boolean
-    | Array<string | number | boolean | object>;
-
-type TGenerateName = {
-    names?: number;
-    gender?: TGenderProps;
-    initial?: boolean;
-};
-
-type TGenerateEmail = {
-    username?: string;
-    domain?: string;
-    digits?: boolean;
-};
-
-type TGenerateMobile = {
-    country?: string;
-    length?: number;
-};
-
-type TGeneratePassword = {
-    length?: number;
-    type: "numeric" | "alpahnumeric";
-};
-
-type TGenerateDigits = {
-    length: number | { min?: number; max: number };
-};
-
-type TOptionsProps = {
-    type:
-        | "name"
-        | "email"
-        | "mobile"
-        | "phone"
-        | "custom"
-        | "password"
-        | "digits";
-    setAttribute?:
-        | TGenerateName
-        | TGenerateEmail
-        | TGenerateMobile
-        | TGeneratePassword
-        | TGenerateDigits
-        | (() => TAttributeProps);
-};
-
-type TGenerateProperty = Array<IGenerateProperty>[];
+import {
+    IGenerateAttribute,
+    IGenerateProperty,
+    IGeneratorOptions,
+} from "@/interface/generator";
+import {
+    TAttributeProps,
+    TGenderProps,
+    TGenerateDigits,
+    TGenerateEmail,
+    TGenerateMobile,
+    TGenerateName,
+    TGeneratePassword,
+    TGenerateProperty,
+} from "@/types/generator";
 
 export class GenerateMock {
     private readonly count: number;
-    private options: IGeneratorOptions = { id: "digits", indexLength: 6 };
+    private options: IGeneratorOptions = {
+        id: "digits",
+        indexLength: 6,
+        version: 1,
+    };
     private propertyBox: TGenerateProperty = [];
 
     constructor(count: number, opts?: IGeneratorOptions) {
+        if (count > 5000)
+            throw new Error(
+                "The amount of request data has passed our expected threshold (5000)."
+            );
         this.count = count;
         if (opts) this.options = opts;
     }
@@ -320,15 +273,19 @@ export class GenerateMock {
         return this.propertyBox;
     }
 
-    compile() {
+    compile(): Record<string, string>[] {
         const arr = this.propertyBox.map((el, i) => {
             const output: Record<string, string> = el.reduce(
                 (obj: any, item: IGenerateProperty) => {
                     obj[String(item.title).replace(" ", "_")] = item.property;
                     return obj;
                 },
-                { _id: this.options.id === "digits" ? i + 1 : randomUUID() }
+                {
+                    _id: this.options.id === "digits" ? i + 1 : randomUUID(),
+                    _v: this.options.version,
+                }
             );
+            output.createdAt = new Date().toUTCString();
             return output;
         });
 
