@@ -136,7 +136,7 @@ export class GenerateMock {
               : this.generateString(10);
         const uniqueCode = digits ? `${this.generateInt(1, 999)}` : "";
 
-        return `${userAlias}${uniqueCode}@${domain}`;
+        return `${userAlias.replace(" ", "")}${uniqueCode}@${domain}`;
     }
 
     private generateMobile(
@@ -163,7 +163,6 @@ export class GenerateMock {
                 el.dial_code === country.slice(1)
             );
         });
-        console.log(length % 10);
         const codeRegExp: RegExp = new RegExp(
             `(\\d{3})(\\d{${3 + (length > 11 ? (length % 10) - 2 : 0)}})(\\d{${4 + (length > 10 ? (length % 10) - 1 : 0)}})`,
             "g"

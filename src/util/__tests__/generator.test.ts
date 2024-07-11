@@ -43,7 +43,6 @@ describe("mock generator class", () => {
             opts: { type: "email", setAttribute: { digits: true } },
         });
         const output = item.getProps()[0];
-        console.log(item.getProps());
         expect(output).toHaveLength(2);
     });
 
@@ -132,7 +131,7 @@ describe("mock generator class", () => {
         item.add("email", {
             opts: { type: "email", setAttribute: { digits: true } },
         });
-        item.add("phone number", {
+        item.add("password", {
             opts: {
                 type: "password",
                 setAttribute: { length: 8, type: "alpahnumeric" },
@@ -141,7 +140,7 @@ describe("mock generator class", () => {
         item.add("phone number", {
             opts: {
                 type: "mobile",
-                setAttribute: { country: "united kingdom", length: 11 },
+                setAttribute: { country: "united kingdom" },
             },
         });
         const output = item.getProps();
