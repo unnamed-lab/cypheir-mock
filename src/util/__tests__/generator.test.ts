@@ -113,7 +113,7 @@ describe("mock generator class", () => {
         item.add("password", {
             opts: {
                 type: "password",
-                setAttribute: { length: 8, type: "alpahnumeric" },
+                setAttribute: { length: 8, type: "alphanumeric" },
             },
         });
         const output = item.getProps()[0];
@@ -164,7 +164,7 @@ describe("mock generator class", () => {
         item.add("password", {
             opts: {
                 type: "password",
-                setAttribute: { length: 8, type: "alpahnumeric" },
+                setAttribute: { length: 8, type: "alphanumeric" },
             },
         });
         item.add("image", {
@@ -209,7 +209,7 @@ describe("mock generator class", () => {
         item.add("password", {
             opts: {
                 type: "password",
-                setAttribute: { length: 8, type: "alpahnumeric" },
+                setAttribute: { length: 8, type: "alphanumeric" },
             },
         });
         item.add("phone number", {
@@ -254,7 +254,7 @@ describe("mock generator class", () => {
         item.add("password", {
             opts: {
                 type: "password",
-                setAttribute: { length: 8, type: "alpahnumeric" },
+                setAttribute: { length: 8, type: "alphanumeric" },
             },
         });
         item.add("phone number", {

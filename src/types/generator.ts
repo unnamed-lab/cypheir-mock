@@ -28,7 +28,7 @@ export type TGenerateMobile = {
 
 export type TGeneratePassword = {
     length?: number;
-    type: "numeric" | "alpahnumeric";
+    type: "numeric" | "alphanumeric";
 };
 
 export type TGenerateDigits = {
