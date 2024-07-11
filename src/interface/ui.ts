@@ -1,7 +1,5 @@
-import { Session } from "next-auth";
-import { Dispatch, FC, MouseEventHandler, SetStateAction } from "react";
+import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { IComboArray } from "./utils";
-import { LucideProps } from "lucide-react";
 
 export interface BlockProps {
     image: string;

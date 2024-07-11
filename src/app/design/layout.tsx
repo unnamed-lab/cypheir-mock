@@ -4,19 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import {
     DoorOpenIcon,
-    File,
     Home,
     LineChart,
-    ListFilter,
-    MoreHorizontal,
     Package,
     Package2,
     PanelLeft,
-    PlusCircle,
     Search,
     Settings,
-    ShoppingCart,
-    Users2,
 } from "lucide-react";
 import {
     Tooltip,
@@ -28,7 +22,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
@@ -116,7 +109,7 @@ function SideNavigation() {
                                 {navigation?.map((el, i) => {
                                     return (
                                         <Link
-                                            key={i}
+                                            key={"nav" + i}
                                             href={el.url}
                                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                         >

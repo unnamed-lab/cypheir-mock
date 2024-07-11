@@ -1,8 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import Nav from "../nav";
-import { getServerSession, Session } from "next-auth";
-import { TUserSession } from "@/types/ui";
-import { authConfig } from "@/lib/auth";
 
 jest.mock("next/navigation", () => ({
     useRouter() {
@@ -35,14 +32,4 @@ describe("Navigation bar component", () => {
         const loginBtn = screen.getByRole("button", { name: /login/i });
         expect(loginBtn).toBeInTheDocument();
     });
-
-    // it("should display create and manage mock buttons when not logged in", () => {
-    //     render(<Nav userSession={userSession} />);
-    //     const manageBtn = screen.getByRole("button", { name: /manage mocks/i });
-    //     const createBtn = screen.getByRole("button", {
-    //         name: /create mock/i,
-    //     });
-    //     expect(manageBtn).toBeInTheDocument();
-    //     expect(createBtn).toBeInTheDocument();
-    // });
 });
