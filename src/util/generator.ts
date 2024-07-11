@@ -1,6 +1,6 @@
 //  Mock Object Generator
 
-import { female, male } from "@/data";
+import { countryCodes, female, male } from "@/data";
 
 interface IGeneratorOptions {
     id: "digits" | "random";
@@ -8,7 +8,7 @@ interface IGeneratorOptions {
 }
 
 interface IGenerateAttribute {
-    attribute: TAttributeProps;
+    attribute?: TAttributeProps;
     opts?: TOptionsProps;
 }
 
@@ -38,9 +38,18 @@ type TGenerateEmail = {
     digits?: boolean;
 };
 
+type TGenerateMobile = {
+    country?: string;
+    length?: number;
+};
+
 type TOptionsProps = {
-    type: "name" | "email" | "custom";
-    setAttribute?: TGenerateName | TGenerateEmail | (() => TAttributeProps);
+    type: "name" | "email" | "mobile" | "phone" | "custom";
+    setAttribute?:
+        | TGenerateName
+        | TGenerateEmail
+        | TGenerateMobile
+        | (() => TAttributeProps);
 };
 
 type TGenerateProperty = Array<IGenerateProperty>;
@@ -123,6 +132,41 @@ export class GenerateMock {
         return `${userAlias}${uniqueCode}@${domain}`;
     }
 
+    private generateMobile(
+        country: string = "Nigeria",
+        length: number = 10
+    ): string {
+        //  FORMAT: [countCode][numberLength] e.g +234 802-323-2323
+        if (length > 15)
+            throw new Error(
+                "The standard international number max length (15) has been exceeded."
+            );
+        else if (length < 10)
+            throw new Error(
+                "The standard international number min length (10) has been exceeded."
+            );
+        const mobileMinLen = Math.pow(10, length - 1);
+        const mobileMaxLen = Math.pow(10, length) - 1;
+        const numLength = this.generateInt(mobileMinLen - 1, mobileMaxLen);
+        const countryID = countryCodes?.find((el) => {
+            return (
+                el.name.toLowerCase() === country.toLowerCase() ||
+                el.name.toLowerCase() === country.toLowerCase() ||
+                el.dial_code === country ||
+                el.dial_code === country.slice(1)
+            );
+        });
+        console.log(length % 10);
+        const codeRegExp: RegExp = new RegExp(
+            `(\\d{3})(\\d{${3 + (length > 11 ? (length % 10) - 2 : 0)}})(\\d{${4 + (length > 10 ? (length % 10) - 1 : 0)}})`,
+            "g"
+        );
+        const fmtNumber = String(numLength).replace(codeRegExp, "$1-$2-$3");
+        const countryCode = countryID ? countryID.dial_code : "+1";
+
+        return `${countryCode} ${fmtNumber}`;
+    }
+
     private getNameProp(): string {
         const name = this.propertyBox.filter(
             (obj) =>
@@ -133,16 +177,8 @@ export class GenerateMock {
 
     // GLOBAL METHODS
 
-    /*
-        build()
-        add(title, opts)
-        remove()
-    */
-
     add(title: string, attribute: IGenerateAttribute) {
-        // let output: IGenerateProperty;
         let attr: TAttributeProps = "";
-
         if (attribute.opts) {
             if (attribute.opts.type === "custom") {
                 let callback = attribute.opts
@@ -162,9 +198,17 @@ export class GenerateMock {
                     genEmail?.domain,
                     genEmail?.digits
                 );
+            } else if (attribute.opts.type === ("mobile" || "phone")) {
+                const genMobile = attribute.opts
+                    .setAttribute as TGenerateMobile;
+                attr = this.generateMobile(
+                    genMobile?.country,
+                    genMobile?.length
+                );
             }
         } else {
-            attr = attribute.attribute;
+            if (attribute.attribute as undefined) attr = "";
+            attr = attribute.attribute as TAttributeProps;
         }
 
         this.propertyBox.push({ title, property: attr });

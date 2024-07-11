@@ -27,33 +27,60 @@ describe("mock generator class", () => {
     it("should generate new mock item - name attribute", () => {
         const item = new GenerateMock(1);
         item.add("name", {
-            attribute: "unnamedcodes",
             opts: {
                 type: "name",
                 setAttribute: { names: 2, gender: "female" },
             },
         });
         const output = item.getProps();
-        expect(output).toBeTruthy();
+        expect(output).toHaveLength(1);
     });
 
     it("should generate new mock item email type", () => {
         const item = new GenerateMock(1);
         item.add("name", { attribute: "unnamedcodes" });
         item.add("email", {
-            attribute: "",
             opts: { type: "email", setAttribute: { digits: true } },
         });
         const output = item.getProps();
-        console.log(output);
-        expect(output).toBeTruthy();
+        expect(output).toHaveLength(2);
     });
 
     it("should generate new mock item email type - without name attribute", () => {
         const item = new GenerateMock(1);
-        item.add("email", { attribute: "", opts: { type: "email" } });
+        item.add("email", { opts: { type: "email" } });
         const output = item.getProps();
-        console.log(output);
-        expect(output).toBeTruthy();
+        expect(output).toHaveLength(1);
+    });
+
+    it("should generate new mock item mobile type", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", { opts: { type: "mobile" } });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
+    });
+
+    it("should generate new mock item mobile type - with options", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", {
+            opts: {
+                type: "mobile",
+                setAttribute: { country: "japan" },
+            },
+        });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
+    });
+
+    it("should generate new mock item mobile type - with options more length", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", {
+            opts: {
+                type: "mobile",
+                setAttribute: { country: "united kingdom", length: 11 },
+            },
+        });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
     });
 });
