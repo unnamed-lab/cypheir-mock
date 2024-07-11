@@ -162,6 +162,23 @@ export class GenerateMock {
         }
     }
 
+    private generateProfileImage(gender: TGenderProps) {
+        function randomImage(gender: "male" | "female") {
+            const randNum = Math.floor(Math.random() * (99 - 1 + 1) + 1);
+            return gender === "male"
+                ? `https://randomuser.me/api/portraits/men/${randNum}.jpg`
+                : `https://randomuser.me/api/portraits/women/${randNum}.jpg`;
+        }
+
+        if (gender === "male") return randomImage("male");
+        else if (gender === "female") return randomImage("female");
+        else {
+            return this.generateInt(0, 1) === 0
+                ? randomImage("male")
+                : randomImage("female");
+        }
+    }
+
     private getNameProp(index: number): string {
         const name = this.propertyBox[index]?.filter(
             (el) =>
@@ -232,6 +249,16 @@ export class GenerateMock {
                         typeof genDigits.length === "number"
                             ? this.generateDigits(genDigits)
                             : this.generateDigits(genDigits);
+                    break;
+                case "profile":
+                    const genProfile = attribute.opts
+                        .setAttribute as TGenderProps;
+                    attr =
+                        genProfile === "male"
+                            ? this.generateProfileImage("male")
+                            : genProfile === "female"
+                              ? this.generateProfileImage("female")
+                              : this.generateProfileImage("mixed");
                     break;
                 default:
                     throw new Error("Please select an attribute type.");

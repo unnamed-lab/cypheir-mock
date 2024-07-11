@@ -43,6 +43,7 @@ export type TOptionsProps = {
         | "phone"
         | "custom"
         | "password"
+        | "profile"
         | "digits";
     setAttribute?:
         | TGenerateName
@@ -50,6 +51,7 @@ export type TOptionsProps = {
         | TGenerateMobile
         | TGeneratePassword
         | TGenerateDigits
+        | TGenderProps
         | (() => TAttributeProps);
 };
 

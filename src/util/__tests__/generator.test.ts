@@ -132,6 +132,18 @@ describe("mock generator class", () => {
         expect(output).toHaveLength(1);
     });
 
+    it("should generate new mock item profile type", () => {
+        const item = new GenerateMock(1);
+        item.add("image", {
+            opts: {
+                type: "profile",
+                setAttribute: "male",
+            },
+        });
+        const output = item.getProps()[0];
+        expect(output).toHaveLength(1);
+    });
+
     it("should generate new mock bundle", () => {
         const item = new GenerateMock(5);
         item.add("name", {
@@ -153,6 +165,12 @@ describe("mock generator class", () => {
             opts: {
                 type: "password",
                 setAttribute: { length: 8, type: "alpahnumeric" },
+            },
+        });
+        item.add("image", {
+            opts: {
+                type: "profile",
+                setAttribute: "male",
             },
         });
         item.add("phone number", {
@@ -200,6 +218,12 @@ describe("mock generator class", () => {
                 setAttribute: { country: "united kingdom" },
             },
         });
+        item.add("image", {
+            opts: {
+                type: "profile",
+                setAttribute: "male",
+            },
+        });
         item.add("bvn", {
             opts: {
                 type: "digits",
@@ -215,7 +239,7 @@ describe("mock generator class", () => {
         item.add("name", {
             opts: {
                 type: "name",
-                setAttribute: { names: 2, gender: "male" },
+                setAttribute: { names: 2, gender: "mixed" },
             },
         });
         item.add("age", {
@@ -237,6 +261,12 @@ describe("mock generator class", () => {
             opts: {
                 type: "mobile",
                 setAttribute: { country: "united kingdom" },
+            },
+        });
+        item.add("image", {
+            opts: {
+                type: "profile",
+                setAttribute: "mixed",
             },
         });
         item.add("bvn", {
