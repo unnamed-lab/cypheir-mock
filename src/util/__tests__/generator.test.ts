@@ -1,6 +1,6 @@
 import { GenerateMock } from "../generator";
 
-describe("mock generato class", () => {
+describe("mock generator class", () => {
     it("should add new mock item", () => {
         const item = new GenerateMock(1);
         item.add("name", { attribute: "unnamedcodes" });
@@ -34,6 +34,26 @@ describe("mock generato class", () => {
             },
         });
         const output = item.getProps();
+        expect(output).toBeTruthy();
+    });
+
+    it("should generate new mock item email type", () => {
+        const item = new GenerateMock(1);
+        item.add("name", { attribute: "unnamedcodes" });
+        item.add("email", {
+            attribute: "",
+            opts: { type: "email", setAttribute: { digits: true } },
+        });
+        const output = item.getProps();
+        console.log(output);
+        expect(output).toBeTruthy();
+    });
+
+    it("should generate new mock item email type - without name attribute", () => {
+        const item = new GenerateMock(1);
+        item.add("email", { attribute: "", opts: { type: "email" } });
+        const output = item.getProps();
+        console.log(output);
         expect(output).toBeTruthy();
     });
 });

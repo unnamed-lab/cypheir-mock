@@ -32,9 +32,15 @@ type TGenerateName = {
     initial?: boolean;
 };
 
+type TGenerateEmail = {
+    username?: string;
+    domain?: string;
+    digits?: boolean;
+};
+
 type TOptionsProps = {
     type: "name" | "email" | "custom";
-    setAttribute?: TGenerateName | (() => TAttributeProps);
+    setAttribute?: TGenerateName | TGenerateEmail | (() => TAttributeProps);
 };
 
 type TGenerateProperty = Array<IGenerateProperty>;
@@ -74,7 +80,10 @@ export class GenerateMock {
         gender: TGenderProps = "mixed",
         initial: boolean = false
     ): string {
-        if (names < 1) throw new Error("Amount of mock name must be greater or equal to one")
+        if (names < 1)
+            throw new Error(
+                "Amount of mock name must be greater or equal to one"
+            );
         let nameArr: string[] = [];
         let nameSex: string[] = [];
 
@@ -97,6 +106,31 @@ export class GenerateMock {
         return nameArr.join(" ");
     }
 
+    private generateEmail(
+        username: string = "",
+        domain: string = "cypheir.xyz",
+        digits: boolean = false
+    ): string {
+        //  FORMAT: [username][digits?]@[domain] e.g unnamed001@cypheir.xyz
+        const checkUser = this.getNameProp();
+        const userAlias = username
+            ? username
+            : checkUser
+              ? checkUser
+              : this.generateString(10);
+        const uniqueCode = digits ? `${this.generateInt(1, 999)}` : "";
+
+        return `${userAlias}${uniqueCode}@${domain}`;
+    }
+
+    private getNameProp(): string {
+        const name = this.propertyBox.filter(
+            (obj) =>
+                obj.title === "name" || "username" || "fullname" || "firstname"
+        );
+        return name[0] ? `${name[0]?.property}` : "";
+    }
+
     // GLOBAL METHODS
 
     /*
@@ -106,7 +140,7 @@ export class GenerateMock {
     */
 
     add(title: string, attribute: IGenerateAttribute) {
-        let output: IGenerateProperty;
+        // let output: IGenerateProperty;
         let attr: TAttributeProps = "";
 
         if (attribute.opts) {
@@ -120,6 +154,13 @@ export class GenerateMock {
                     genName?.names,
                     genName?.gender,
                     genName?.initial
+                );
+            } else if (attribute.opts.type === "email") {
+                const genEmail = attribute.opts.setAttribute as TGenerateEmail;
+                attr = this.generateEmail(
+                    genEmail?.username,
+                    genEmail?.domain,
+                    genEmail?.digits
                 );
             }
         } else {
