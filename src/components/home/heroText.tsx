@@ -4,7 +4,6 @@ import BoxReveal from "@/components/magicui/box-reveal";
 import { Button, ModalForm } from "@/components/form";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Loading from "@/app/loading";
 import { HomeStateProps } from "@/interface/ui";
 
 export default function HeroBox({ setState }: HomeStateProps) {

@@ -124,7 +124,6 @@ export class GenerateMock {
         const countryID = countryCodes?.find((el) => {
             return (
                 el.name.toLowerCase() === country.toLowerCase() ||
-                el.name.toLowerCase() === country.toLowerCase() ||
                 el.dial_code === country ||
                 el.dial_code === country.slice(1)
             );
@@ -181,8 +180,7 @@ export class GenerateMock {
 
     private getNameProp(index: number): string {
         const name = this.propertyBox[index]?.filter(
-            (el) =>
-                el.title === "name" || "username" || "fullname" || "firstname"
+            (el) => el.title === "name"
         );
         return (name?.[0]?.property as string) ?? "";
     }
@@ -220,12 +218,20 @@ export class GenerateMock {
                         genEmail?.digits
                     );
                     break;
-                case "mobile" || "phone":
+                case "mobile":
                     const genMobile = attribute.opts
                         .setAttribute as TGenerateMobile;
                     attr = this.generateMobile(
                         genMobile?.country,
                         genMobile?.length
+                    );
+                    break;
+                case "phone":
+                    const genPhone = attribute.opts
+                        .setAttribute as TGenerateMobile;
+                    attr = this.generateMobile(
+                        genPhone?.country,
+                        genPhone?.length
                     );
                     break;
                 case "password":
@@ -245,10 +251,7 @@ export class GenerateMock {
                 case "digits":
                     const genDigits = attribute.opts
                         .setAttribute as TGenerateDigits;
-                    attr =
-                        typeof genDigits.length === "number"
-                            ? this.generateDigits(genDigits)
-                            : this.generateDigits(genDigits);
+                    attr = this.generateDigits(genDigits);
                     break;
                 case "profile":
                     const genProfile = attribute.opts
@@ -280,7 +283,7 @@ export class GenerateMock {
                 this.propertyBox.push([item]);
             }
         } else {
-            this.propertyBox.map((el, index) => {
+            this.propertyBox.forEach((el, index) => {
                 const item = this.configureProperty(index, title, attribute);
                 el.push(item);
             });

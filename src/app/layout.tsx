@@ -6,7 +6,7 @@ import { WebVitals } from "./web-vitals";
 import { MetadataProps } from "@/interface/ui";
 import { Footer, Nav } from "@/components/layout";
 import { AuthProvider } from "@/context";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";

@@ -5,19 +5,16 @@ import Link from "next/link";
 import { Brand } from "../ui";
 import { GitHubIcon } from "@/icons";
 import { Button, ModalForm } from "../form";
-import { NavButtonProps, SessionUser } from "@/interface/ui";
+import { NavButtonProps } from "@/interface/ui";
 import { LoginButtonProps } from "@/interface/form";
 import { signOut } from "next-auth/react";
 import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
-import Loading from "@/app/loading";
-import { cn } from "@/lib/utils";
 import { TUserSession } from "@/types/ui";
 
 export default function Nav({ userSession }: { userSession?: TUserSession }) {
-    const [loading, setLoading] = useState<boolean>(false);
-    const { user, setUser } = useUser();
-    const [userData, setUserData] = useState(null);
+    const { setUser } = useUser();
+    const [, setUserData] = useState(null);
 
     useEffect(() => {
         if (userSession) {
@@ -111,7 +108,7 @@ function GitHubRedirect() {
     );
 }
 
-function LoginButton({ url, handler }: LoginButtonProps) {
+function LoginButton({ handler }: LoginButtonProps) {
     return (
         <>
             <Button

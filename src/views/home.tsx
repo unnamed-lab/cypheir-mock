@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { HeroBox, HeroDemo } from "@/components/home";
-import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 
 export default function Hero() {
