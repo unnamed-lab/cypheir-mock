@@ -4,7 +4,7 @@ import { ManageMock } from "@/views";
 import { getServerSession } from "next-auth";
 
 export default async function ManageDashboard() {
-    await LoginIsRequiredServer();
+    await LoginIsRequiredServer("/design/manage");
     const session = await getServerSession(authConfig);
 
     return (
