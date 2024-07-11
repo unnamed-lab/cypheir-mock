@@ -43,12 +43,18 @@ type TGenerateMobile = {
     length?: number;
 };
 
+type TGeneratePassword = {
+    length?: number;
+    type: "numeric" | "alpahnumeric";
+};
+
 type TOptionsProps = {
-    type: "name" | "email" | "mobile" | "phone" | "custom";
+    type: "name" | "email" | "mobile" | "phone" | "custom" | "password";
     setAttribute?:
         | TGenerateName
         | TGenerateEmail
         | TGenerateMobile
+        | TGeneratePassword
         | (() => TAttributeProps);
 };
 
@@ -205,6 +211,18 @@ export class GenerateMock {
                     genMobile?.country,
                     genMobile?.length
                 );
+            } else if (attribute.opts.type === "password") {
+                const genPassword = attribute.opts
+                    .setAttribute as TGeneratePassword;
+
+                if (genPassword.type === "numeric") {
+                    attr = this.generateInt(
+                        Math.pow(10, (genPassword.length as number) - 1),
+                        Math.pow(10, genPassword.length as number) - 1
+                    );
+                } else {
+                    attr = this.generateString(genPassword.length as number);
+                }
             }
         } else {
             if (attribute.attribute as undefined) attr = "";

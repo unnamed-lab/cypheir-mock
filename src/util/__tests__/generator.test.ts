@@ -83,4 +83,40 @@ describe("mock generator class", () => {
         const output = item.getProps();
         expect(output).toHaveLength(1);
     });
+
+    it("should generate new mock item password type - default", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", {
+            opts: {
+                type: "password",
+                setAttribute: { length: 8 },
+            },
+        });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
+    });
+
+    it("should generate new mock item password type", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", {
+            opts: {
+                type: "password",
+                setAttribute: { length: 8, type: "numeric" },
+            },
+        });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
+    });
+
+    it("should generate new mock item password type - alphanumeric", () => {
+        const item = new GenerateMock(1);
+        item.add("phone number", {
+            opts: {
+                type: "password",
+                setAttribute: { length: 8, type: "alpahnumeric" },
+            },
+        });
+        const output = item.getProps();
+        expect(output).toHaveLength(1);
+    });
 });
