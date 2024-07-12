@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { screen, render, fireEvent } from "@testing-library/react";
 import InputText from "../inputText";
 

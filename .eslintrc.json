@@ -1,7 +1,29 @@
 {
-    "extends": ["next", "prettier"],
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "prettier",
+        "eslint:recommended"
+    ],
     "rules": {
-        "no-unused-vars": "warn",
-        "@next/next/no-img-element": "off"
+        "@next/next/no-img-element": "error",
+        "@next/next/no-typos": "error",
+        "@next/next/google-font-preconnect": "error",
+        "@next/next/google-font-display": "error",
+        "@next/next/no-async-client-component": "error",
+        "react/no-array-index-key": "error",
+        "no-unused-vars": "error",
+        "for-direction": "error",
+        "no-const-assign": "error",
+        "no-dupe-else-if": "error",
+        "no-inner-declarations": "error",
+        "no-undef-init": "error",
+        "no-self-assign": "error",
+        "no-unreachable": "error",
+        "no-unsafe-negation": "error",
+        "valid-typeof": "error",
+        "valid-jsdoc": "warn",
+        "no-invalid-regexp": "error",
+        "no-invalid-this": "error"
     }
 }

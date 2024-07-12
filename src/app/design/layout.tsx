@@ -106,10 +106,10 @@ function SideNavigation() {
                                     </span>
                                 </Link>
 
-                                {navigation?.map((el, i) => {
+                                {navigation?.map((el) => {
                                     return (
                                         <Link
-                                            key={"nav" + i}
+                                            key={"nav-" + el.title}
                                             href={el.url}
                                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                         >
@@ -142,7 +142,7 @@ function SideNavigation() {
                                 className="overflow-hidden rounded-full"
                             >
                                 <Image
-                                    src={user?.image as string | ""}
+                                    src={user?.image as string}
                                     width={36}
                                     height={36}
                                     alt="Avatar"
@@ -173,9 +173,9 @@ function SideNavigation() {
                         <span className="sr-only">Cypheir Mock</span>
                     </Link>
 
-                    {navigation?.map((el, i) => {
+                    {navigation?.map((el) => {
                         return (
-                            <Tooltip key={i}>
+                            <Tooltip key={"tooltip-" + el.title}>
                                 <TooltipTrigger asChild>
                                     <Link
                                         href={el.url}
