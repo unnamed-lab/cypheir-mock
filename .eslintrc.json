@@ -24,6 +24,23 @@
         "valid-typeof": "error",
         "valid-jsdoc": "warn",
         "no-invalid-regexp": "error",
-        "no-invalid-this": "error"
+        "no-invalid-this": "error",
+        "prefer-const": [
+            "error",
+            { "destructuring": "any", "ignoreReadBeforeAssign": false }
+        ],
+        "prefer-destructuring": ["error", { "object": true }],
+        "no-compare-neg-zero": "error",
+        "no-cond-assign": "error",
+        "no-constant-binary-expression": "error",
+        "no-constant-condition": "error",
+        "no-dupe-args": "error",
+        "no-dupe-keys": "error",
+        "no-duplicate-case": "error",
+        "no-duplicate-imports": "error",
+        "no-empty-character-class": "error",
+        "no-empty-pattern": "error",
+        "no-ex-assign": "error",
+        "no-loss-of-precision": "error"
     }
 }

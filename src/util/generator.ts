@@ -65,7 +65,7 @@ export class GenerateMock {
             throw new Error(
                 "Amount of mock name must be greater or equal to one"
             );
-        let nameArr: string[] = [];
+        const nameArr: string[] = [];
         let nameSex: string[] = [];
 
         if (gender === "male") nameSex = male;
@@ -179,9 +179,13 @@ export class GenerateMock {
     }
 
     private getNameProp(index: number): string {
-        const name = this.propertyBox[index]?.filter(
-            (el) => el.title === "name"
-        );
+        const name = this.propertyBox[index]?.filter((el) => {
+            if (el.title === "name") true;
+            else if (el.title === "fullname") true;
+            else if (el.title === "firstname") true;
+            else if (el.title === "username") true;
+            else false;
+        });
         return (name?.[0]?.property as string) ?? "";
     }
 
@@ -195,7 +199,7 @@ export class GenerateMock {
             const setType = attribute.opts.type;
             switch (setType) {
                 case "custom": {
-                    let callback = attribute.opts
+                    const callback = attribute.opts
                         .setAttribute as () => TAttributeProps;
                     attr = callback;
                     break;
@@ -300,7 +304,7 @@ export class GenerateMock {
     }
 
     remove(title: string) {
-        this.propertyBox.map((el) => {
+        this.propertyBox.forEach((el) => {
             const index = el.findIndex((obj) => obj.title === title);
             el.splice(index, 1);
         });
