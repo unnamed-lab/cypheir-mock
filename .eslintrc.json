@@ -41,6 +41,14 @@
         "no-empty-character-class": "error",
         "no-empty-pattern": "error",
         "no-ex-assign": "error",
-        "no-loss-of-precision": "error"
+        "no-loss-of-precision": "error",
+        "no-empty": "error",
+        "no-empty-function": "error",
+        "no-empty-static-block": "error",
+        "no-extra-boolean-cast": "error",
+        "no-redeclare": "error",
+        "no-shadow-restricted-names": "error",
+        "no-useless-catch": "error",
+        "no-useless-escape": "error"
     }
 }
