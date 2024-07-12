@@ -65,7 +65,7 @@ export class GenerateMock {
             throw new Error(
                 "Amount of mock name must be greater or equal to one"
             );
-        let nameArr: string[] = [];
+        const nameArr: string[] = [];
         let nameSex: string[] = [];
 
         if (gender === "male") nameSex = male;
@@ -179,9 +179,13 @@ export class GenerateMock {
     }
 
     private getNameProp(index: number): string {
-        const name = this.propertyBox[index]?.filter(
-            (el) => el.title === "name"
-        );
+        const name = this.propertyBox[index]?.filter((el) => {
+            if (el.title === "name") true;
+            else if (el.title === "fullname") true;
+            else if (el.title === "firstname") true;
+            else if (el.title === "username") true;
+            else false;
+        });
         return (name?.[0]?.property as string) ?? "";
     }
 
@@ -194,12 +198,13 @@ export class GenerateMock {
         if (attribute.opts) {
             const setType = attribute.opts.type;
             switch (setType) {
-                case "custom":
-                    let callback = attribute.opts
+                case "custom": {
+                    const callback = attribute.opts
                         .setAttribute as () => TAttributeProps;
                     attr = callback;
                     break;
-                case "name":
+                }
+                case "name": {
                     const genName = attribute.opts
                         .setAttribute as TGenerateName;
                     attr = this.generateName(
@@ -208,7 +213,8 @@ export class GenerateMock {
                         genName?.initial
                     );
                     break;
-                case "email":
+                }
+                case "email": {
                     const genEmail = attribute.opts
                         .setAttribute as TGenerateEmail;
                     attr = this.generateEmail(
@@ -218,7 +224,8 @@ export class GenerateMock {
                         genEmail?.digits
                     );
                     break;
-                case "mobile":
+                }
+                case "mobile": {
                     const genMobile = attribute.opts
                         .setAttribute as TGenerateMobile;
                     attr = this.generateMobile(
@@ -226,7 +233,8 @@ export class GenerateMock {
                         genMobile?.length
                     );
                     break;
-                case "phone":
+                }
+                case "phone": {
                     const genPhone = attribute.opts
                         .setAttribute as TGenerateMobile;
                     attr = this.generateMobile(
@@ -234,7 +242,8 @@ export class GenerateMock {
                         genPhone?.length
                     );
                     break;
-                case "password":
+                }
+                case "password": {
                     const genPassword = attribute.opts
                         .setAttribute as TGeneratePassword;
                     if (genPassword.type === "numeric") {
@@ -248,12 +257,14 @@ export class GenerateMock {
                         );
                     }
                     break;
-                case "digits":
+                }
+                case "digits": {
                     const genDigits = attribute.opts
                         .setAttribute as TGenerateDigits;
                     attr = this.generateDigits(genDigits);
                     break;
-                case "profile":
+                }
+                case "profile": {
                     const genProfile = attribute.opts
                         .setAttribute as TGenderProps;
                     attr =
@@ -263,6 +274,7 @@ export class GenerateMock {
                               ? this.generateProfileImage("female")
                               : this.generateProfileImage("mixed");
                     break;
+                }
                 default:
                     throw new Error("Please select an attribute type.");
             }
@@ -292,7 +304,7 @@ export class GenerateMock {
     }
 
     remove(title: string) {
-        this.propertyBox.map((el) => {
+        this.propertyBox.forEach((el) => {
             const index = el.findIndex((obj) => obj.title === title);
             el.splice(index, 1);
         });

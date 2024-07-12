@@ -1,7 +1,54 @@
 {
-    "extends": ["next", "prettier"],
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "prettier",
+        "eslint:recommended"
+    ],
     "rules": {
-        "no-unused-vars": "warn",
-        "@next/next/no-img-element": "off"
+        "@next/next/no-img-element": "error",
+        "@next/next/no-typos": "error",
+        "@next/next/google-font-preconnect": "error",
+        "@next/next/google-font-display": "error",
+        "@next/next/no-async-client-component": "error",
+        "react/no-array-index-key": "error",
+        "no-unused-vars": "error",
+        "for-direction": "error",
+        "no-const-assign": "error",
+        "no-dupe-else-if": "error",
+        "no-inner-declarations": "error",
+        "no-undef-init": "error",
+        "no-self-assign": "error",
+        "no-unreachable": "error",
+        "no-unsafe-negation": "error",
+        "valid-typeof": "error",
+        "valid-jsdoc": "warn",
+        "no-invalid-regexp": "error",
+        "no-invalid-this": "error",
+        "prefer-const": [
+            "error",
+            { "destructuring": "any", "ignoreReadBeforeAssign": false }
+        ],
+        "prefer-destructuring": ["error", { "object": true }],
+        "no-compare-neg-zero": "error",
+        "no-cond-assign": "error",
+        "no-constant-binary-expression": "error",
+        "no-constant-condition": "error",
+        "no-dupe-args": "error",
+        "no-dupe-keys": "error",
+        "no-duplicate-case": "error",
+        "no-duplicate-imports": "error",
+        "no-empty-character-class": "error",
+        "no-empty-pattern": "error",
+        "no-ex-assign": "error",
+        "no-loss-of-precision": "error",
+        "no-empty": "error",
+        "no-empty-function": "error",
+        "no-empty-static-block": "error",
+        "no-extra-boolean-cast": "error",
+        "no-redeclare": "error",
+        "no-shadow-restricted-names": "error",
+        "no-useless-catch": "error",
+        "no-useless-escape": "error"
     }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { GenerateMock } from "../generator";
 
 describe("mock generator class", () => {

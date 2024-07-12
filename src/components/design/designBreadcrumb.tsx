@@ -22,12 +22,15 @@ export default function DesignBreadcrumb() {
                     return (
                         <>
                             {i > 0 ? (
-                                <BreadcrumbSeparator key={"sep" + i} />
+                                <BreadcrumbSeparator key={"sep-" + el.title} />
                             ) : null}
-                            <BreadcrumbItem key={"item" + i}>
-                                <BreadcrumbLink key={"link" + i} asChild>
+                            <BreadcrumbItem key={"item-" + el.title}>
+                                <BreadcrumbLink
+                                    key={"link-" + el.title}
+                                    asChild
+                                >
                                     <Link
-                                        key={"anchor" + i}
+                                        key={"anchor-" + el.title}
                                         href={el.url}
                                         className="capitalize"
                                     >
