@@ -3,7 +3,8 @@
         "next",
         "next/core-web-vitals",
         "prettier",
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "rules": {
         "@next/next/no-img-element": "error",
@@ -49,6 +50,9 @@
         "no-redeclare": "error",
         "no-shadow-restricted-names": "error",
         "no-useless-catch": "error",
-        "no-useless-escape": "error"
+        "no-useless-escape": "error",
+        "react/jsx-no-useless-fragment": ["error", { "allowExpression": true }],
+        "react/prefer-read-only-props": "error",
+        "react/prop-types": "off"
     }
 }

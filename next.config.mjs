@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    /*
     future: {
         webpack5: true,
     },
@@ -15,6 +16,9 @@ const nextConfig = {
 
         return config;
     },
+    */
+
+    pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 
     images: {
         remotePatterns: [

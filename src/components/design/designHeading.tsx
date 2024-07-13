@@ -1,9 +1,9 @@
 import React from "react";
 export default function DesignHeading({
     children,
-}: {
+}: Readonly<{
     children: React.ReactNode | string;
-}) {
+}>) {
     return (
         <h1 className="mb-3 w-full border-b border-b-zinc-200 bg-white py-12 text-center font-sans text-3xl font-semibold lg:text-4xl">
             {children}

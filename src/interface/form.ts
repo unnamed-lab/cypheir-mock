@@ -44,7 +44,10 @@ export interface LoginButtonProps {
 }
 
 export interface ComboBoxProps {
+    defaultValue?: string;
+    name: string;
     width?: number;
     array: { value: string; label: string }[];
     placeholder: string;
+    onChange: React.Dispatch<any>;
 }

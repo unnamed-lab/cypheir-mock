@@ -180,10 +180,21 @@ export class GenerateMock {
 
     private getNameProp(index: number): string {
         const name = this.propertyBox[index]?.filter((el) => {
-            el.title === "name" ||
-                el.title === "fullname" ||
-                el.title === "firstname" ||
-                el.title === "username";
+            function checkTitle(title: string): boolean {
+                switch (title) {
+                    case "name":
+                        return true;
+                    case "fullname":
+                        return true;
+                    case "firstname":
+                        return true;
+                    case "username":
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            return checkTitle(el.title);
         });
         return (name?.[0]?.property as string) ?? "";
     }

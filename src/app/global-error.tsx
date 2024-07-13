@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import errorImg from "@/assets/img/error.svg";
 import { Block } from "@/components/ui";
 import { GlobalErrorProp } from "@/interface/ui";

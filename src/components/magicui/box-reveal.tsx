@@ -1,6 +1,6 @@
 "use client";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { JSX, useEffect, useRef } from "react";
+import React, { JSX, useEffect, useRef } from "react";
 
 interface BoxRevealProps {
     children: JSX.Element;
@@ -16,7 +16,7 @@ export const BoxReveal = ({
     height = "auto",
     boxColor,
     duration,
-}: BoxRevealProps) => {
+}: Readonly<BoxRevealProps>) => {
     const mainControls = useAnimation();
     const slideControls = useAnimation();
 

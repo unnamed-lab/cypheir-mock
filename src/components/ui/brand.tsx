@@ -1,8 +1,9 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Brand({ className }: { className?: string }) {
+export default function Brand({ className }: Readonly<{ className?: string }>) {
     return (
         <Link
             href={"/"}

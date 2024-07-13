@@ -1,3 +1,4 @@
+import React from "react";
 import { BackdropProps } from "@/interface/ui";
 
 export default function ModalBackdrop({ state, handler }: BackdropProps) {

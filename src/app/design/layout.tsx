@@ -201,7 +201,7 @@ function SideNavigation() {
     );
 }
 
-function SignOut({ mode }: { mode: "mobile" | "desktop" }) {
+function SignOut({ mode }: Readonly<{ mode: "mobile" | "desktop" }>) {
     const title = "Sign Out";
     const icon = <DoorOpenIcon className="h-5 w-5" />;
     const { removeUser } = useUser();

@@ -19,8 +19,9 @@ export default function DesignBreadcrumb() {
         <Breadcrumb className="hidden md:flex">
             <BreadcrumbList>
                 {breacrumb.map((el, i) => {
+                    const itemId = "breadcrumb-item-" + i;
                     return (
-                        <>
+                        <React.Fragment key={itemId}>
                             {i > 0 ? (
                                 <BreadcrumbSeparator key={"sep-" + el.title} />
                             ) : null}
@@ -38,7 +39,7 @@ export default function DesignBreadcrumb() {
                                     </Link>
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-                        </>
+                        </React.Fragment>
                     );
                 })}
             </BreadcrumbList>

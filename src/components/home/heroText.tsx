@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import BoxReveal from "@/components/magicui/box-reveal";
 import { Button, ModalForm } from "@/components/form";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { HomeStateProps } from "@/interface/ui";
 
-export default function HeroBox({ setState }: HomeStateProps) {
+export default function HeroBox({ setState }: Readonly<HomeStateProps>) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
     const session = useSession();
     const router = useRouter();
