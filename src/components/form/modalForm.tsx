@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { ModalBackdrop } from "../ui";
 import Button from "./button";
 import { GitHubIcon } from "@/icons";
@@ -12,7 +12,7 @@ export default function ModalForm({
     type = "login",
     state = false,
     setState,
-}: ModalFormProps) {
+}: Readonly<ModalFormProps>) {
     const session = useSession();
     const router = useRouter();
     const searchParams = useSearchParams();

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import developer from "@/assets/developer.svg";
 import { motion } from "framer-motion";

@@ -1,3 +1,4 @@
+import React from "react";
 import { LoginIsRequiredServer } from "@/lib/loginRequiredServer";
 import { ManageMock } from "@/views";
 

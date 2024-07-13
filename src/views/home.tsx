@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HeroBox, HeroDemo } from "@/components/home";
 import Loading from "@/app/loading";
 

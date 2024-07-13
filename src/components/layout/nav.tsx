@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Brand } from "../ui";
@@ -12,9 +12,11 @@ import { getUserData } from "@/lib/fetchUser";
 import { useUser } from "@/store";
 import { TUserSession } from "@/types/ui";
 
-export default function Nav({ userSession }: { userSession?: TUserSession }) {
+export default function Nav({
+    userSession,
+}: Readonly<{ userSession?: TUserSession }>) {
     const { setUser } = useUser();
-    const [, setUserData] = useState(null);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         if (userSession) {
@@ -34,19 +36,17 @@ export default function Nav({ userSession }: { userSession?: TUserSession }) {
                     });
             }
         }
-    }, [userSession, setUser]);
+    }, [userSession, setUser, userData]);
 
     return (
-        <>
-            <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
-                <Brand />
-                <NavMenu session={userSession} />
-            </nav>
-        </>
+        <nav className="mt-[5%] flex w-full items-center justify-between gap-1 px-[7.5%] lg:mt-[1.5%]">
+            <Brand />
+            <NavMenu session={userSession} />
+        </nav>
     );
 }
 
-function NavMenu({ session }: { session: TUserSession }) {
+function NavMenu({ session }: Readonly<{ session: TUserSession }>) {
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
     const loginHandler = () => {
@@ -91,34 +91,30 @@ function NavMenu({ session }: { session: TUserSession }) {
 
 function GitHubRedirect() {
     return (
-        <>
-            <Link
-                href="https://github.com/unnamed-lab/cypheir-mock"
-                target="_blank"
+        <Link
+            href="https://github.com/unnamed-lab/cypheir-mock"
+            target="_blank"
+        >
+            <Button
+                type="button"
+                className="hover:bg-white hover:outline hover:outline-1 hover:outline-black"
             >
-                <Button
-                    type="button"
-                    className="hover:bg-white hover:outline hover:outline-1 hover:outline-black"
-                >
-                    <GitHubIcon width={20} height={20} />
-                    Star on GitHub
-                </Button>
-            </Link>
-        </>
+                <GitHubIcon width={20} height={20} />
+                Star on GitHub
+            </Button>
+        </Link>
     );
 }
 
 function LoginButton({ handler }: LoginButtonProps) {
     return (
-        <>
-            <Button
-                type="button"
-                className="bg-white text-zinc-900 outline outline-1 outline-zinc-900 hover:bg-zinc-900 hover:text-white"
-                handler={handler}
-            >
-                Login
-            </Button>
-        </>
+        <Button
+            type="button"
+            className="bg-white text-zinc-900 outline outline-1 outline-zinc-900 hover:bg-zinc-900 hover:text-white"
+            handler={handler}
+        >
+            Login
+        </Button>
     );
 }
 
@@ -130,43 +126,41 @@ function SignOutButton() {
         removeUser("cyphmockuser");
     };
     return (
-        <>
-            <Button
-                type="button"
-                className="h-9 min-w-9 bg-red-600 px-1 text-white hover:bg-zinc-900"
-                handler={handleSignOut}
+        <Button
+            type="button"
+            className="h-9 min-w-9 bg-red-600 px-1 text-white hover:bg-zinc-900"
+            handler={handleSignOut}
+        >
+            <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
             >
-                <svg
-                    fill="none"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M16 4H19C20.1046 4 21 4.89543 21 6V7M16 20H19C20.1046 20 21 19.1046 21 18V17M4.4253 19.4276L10.4253 21.2276C11.7085 21.6126 13 20.6517 13 19.3119V4.68806C13 3.34834 11.7085 2.38744 10.4253 2.77241L4.4253 4.57241C3.57934 4.8262 3 5.60484 3 6.48806V17.5119C3 18.3952 3.57934 19.1738 4.4253 19.4276Z"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                    />
-                    <path
-                        d="M9.001 12H9"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                    />
-                    <path
-                        d="M16 12H21M21 12L19 10M21 12L19 14"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                    />
-                </svg>
-            </Button>
-        </>
+                <path
+                    d="M16 4H19C20.1046 4 21 4.89543 21 6V7M16 20H19C20.1046 20 21 19.1046 21 18V17M4.4253 19.4276L10.4253 21.2276C11.7085 21.6126 13 20.6517 13 19.3119V4.68806C13 3.34834 11.7085 2.38744 10.4253 2.77241L4.4253 4.57241C3.57934 4.8262 3 5.60484 3 6.48806V17.5119C3 18.3952 3.57934 19.1738 4.4253 19.4276Z"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                />
+                <path
+                    d="M9.001 12H9"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                />
+                <path
+                    d="M16 12H21M21 12L19 10M21 12L19 14"
+                    stroke="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                />
+            </svg>
+        </Button>
     );
 }
 
@@ -175,14 +169,8 @@ function NavButton({ name, url, className }: NavButtonProps) {
     const handleRedirect = () => router.push(url);
 
     return (
-        <>
-            <Button
-                type="button"
-                className={className}
-                handler={handleRedirect}
-            >
-                {name}
-            </Button>
-        </>
+        <Button type="button" className={className} handler={handleRedirect}>
+            {name}
+        </Button>
     );
 }

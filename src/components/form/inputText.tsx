@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { InputProps } from "@/interface/form";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +16,7 @@ export default function InputText({
     type = "text",
     value,
     required = false,
-}: InputProps) {
+}: Readonly<InputProps>) {
     const identifier = id && typeof id !== "undefined" ? id : `${name}Id`;
     return (
         <>

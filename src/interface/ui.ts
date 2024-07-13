@@ -1,4 +1,4 @@
-import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import React, { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { IComboArray } from "./utils";
 
 export interface BlockProps {
@@ -29,27 +29,27 @@ export interface BackdropProps {
     state?: boolean;
     handler?: MouseEventHandler<HTMLDivElement>;
 }
-
-// export interface PageSession {
-//     session?: Session | null;
-// }
-
 export interface ConfigDropdownProps {
+    defaultValue?: string;
+    name: string;
     title: string;
     required?: boolean;
     info?: string;
     list: Array<IComboArray>;
     placeholder: string;
     width?: number;
+    onChange: React.Dispatch<any>;
 }
 
 export interface ConfigTextareaProps {
+    name?: string;
     title: string;
     required?: boolean;
     info?: string;
     placeholder: string;
     width?: number;
     height?: number;
+    onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 export interface SessionUser {

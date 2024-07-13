@@ -17,13 +17,23 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-// import { Button } from "../form";
 import { Button } from "./button";
 import { ComboBoxProps } from "@/interface/form";
 
-export function Combobox({ array, width = 200, placeholder }: ComboBoxProps) {
+export function Combobox({
+    defaultValue,
+    name,
+    array,
+    width = 200,
+    placeholder,
+    onChange,
+}: ComboBoxProps) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState("");
+    const [value, setValue] = React.useState(defaultValue || "");
+
+    React.useEffect(() => {
+        onChange((prev: any) => ({ ...prev, [name]: value }));
+    }, [name, onChange, value]);
 
     return (
         <Popover open={open} onOpenChange={setOpen}>

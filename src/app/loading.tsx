@@ -1,3 +1,4 @@
+import React from "react";
 import { Brand } from "@/components/ui";
 
 export default function Loading() {

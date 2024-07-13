@@ -1,3 +1,4 @@
+import React from "react";
 import { Hero } from "@/views";
 
 export default async function Home() {
